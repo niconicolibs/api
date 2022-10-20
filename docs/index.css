@@ -1,0 +1,44 @@
+html {
+    box-sizing: border-box;
+    overflow: -moz-scrollbars-vertical;
+    overflow-y: scroll;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+body {
+    margin: 0;
+    background: #fafafa;
+}
+
+.swagger-ui .opblock-body pre,
+.swagger-ui .response-col_description__inner div.markdown {
+    font-size: 15px;
+    font-style: normal;
+    font-weight: normal;
+}
+
+.swagger-ui .opblock-body pre {
+    font-family: "Courier New", Consolas, monospace;
+}
+
+.responses-table .response {
+    border-top: 1px solid rgba(59,65,81,.2);
+}
+
+.swagger-ui .response-col_status {
+    text-align: right;
+    padding-right: 15px !important;
+}
+
+.swagger-ui table tbody tr td {
+    padding-bottom: 10px;
+}
+
+.swagger-ui .model {
+    font-size: 14px;
+}
