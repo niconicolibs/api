@@ -1,0 +1,65 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: ニコ動API(nvapi)
+  host: nvapi.nicovideo.jp
+paths:
+  "/v1/hello":
+    get:
+      summary:
+        "ポケモン情報取得API"
+      description:
+        "指定した名前のポケモンを検索し、情報を取得します。"
+      parameters:
+        - name: "name"
+          in: "path"
+          description: "ポケモンの名前"
+          required: true
+          type: "string"
+      responses:
+        200:
+          description: "Success"
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  no:
+                    type: "string"
+                  name:
+                    type: "string"
+                  type:
+                    type: "string"
+                  comment:
+                    type: "string"
+                example:
+                  no: "007"
+                  name: "ゼニガメ"
+                  type: "みず"
+                  comment: "こうらに とじこもり みをまもる。"
+        400:
+          description: "BadRequest"
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  status:
+                    type: "string"
+                    example: "BAD_REQUEST"
+                  message:
+                    type: "string"
+                    example: "BAD_REQUEST"
+        404:
+          desctiption: "NotFound"
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  status:
+                    type: "string"
+                    example: "NOT_FOUND"
+                  message:
+                    type: "string"
+                    example: "NOT_FOUND"
