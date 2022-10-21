@@ -1,15 +1,16 @@
-openapi: 3.1.0
+openapi: 3.0.0
+x-stoplight:
+  id: 366fd12881c11
 info:
   title: Public API
   version: 1.0.0
-  summary: 主にニコニコ全体に共通する情報を取得するためのAPI
-  description: ニコ動全体のpublicな内容について
+  description: 主にニコニコ全体に共通する情報を取得するためのAPI
 servers:
   - url: 'https://public.api.nicovideo.jp'
 paths:
   /v1/users.json:
     get:
-      summary: Your GET endpoint
+      summary: Get Users Infomation
       tags:
         - Users
       responses:
@@ -74,15 +75,14 @@ components:
           type: string
       required:
         - status
-      examples:
-        - status: 200
+      x-examples:
+        example:
+          status: 200
     User:
-      title: User
-      x-stoplight:
-        id: 1mf8hyqgpwb8c
       type: object
-      examples:
-        - userId: '2'
+      x-examples:
+        example:
+          userId: '2'
           nickname: 戀塚
           description: |
             （・＿・）ノ<br>
@@ -92,8 +92,8 @@ components:
           hasSuperPremiumOrStrongerRights: false
           icons:
             urls:
-              50x50: 'https://secure-dcdn.cdn.nimg.jp/nicoaccount/usericon/s/0/2.jpg?1305362341'
               150x150: 'https://secure-dcdn.cdn.nimg.jp/nicoaccount/usericon/0/2.jpg?1305362341'
+              50x50: 'https://secure-dcdn.cdn.nimg.jp/nicoaccount/usericon/s/0/2.jpg?1305362341'
       properties:
         userId:
           type: string
@@ -113,17 +113,17 @@ components:
           type: object
           required:
             - urls
-          description: アイコンのURL
+          description: プロフィールアイコン
           properties:
             urls:
               type: object
               required:
-                - 50x50
                 - 150x150
+                - 50x50
               properties:
-                50x50:
-                  type: string
                 150x150:
+                  type: string
+                50x50:
                   type: string
       required:
         - userId
