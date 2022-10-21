@@ -12,7 +12,7 @@ paths:
     get:
       summary: Get Users Infomation
       tags:
-        - Users
+        - User
       responses:
         '200':
           description: OK
@@ -63,8 +63,9 @@ paths:
     parameters: []
   /v2/user.json:
     get:
-      summary: Your GET endpoint
-      tags: []
+      summary: Get Own Infomation
+      tags: 
+        - User
       responses:
         '200':
           description: OK
