@@ -1,0 +1,16 @@
+title: Meta
+x-stoplight:
+  id: knxgt5s0yoi62
+type: object
+properties:
+  status:
+    type: integer
+  errorCode:
+    type: string
+  errorMessage:
+    type: string
+required:
+  - status
+x-examples:
+  example:
+    status: 200

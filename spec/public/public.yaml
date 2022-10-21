@@ -64,7 +64,7 @@ components:
     Meta:
       title: Meta
       x-stoplight:
-        id: 5jbxk9peuta69
+        id: knxgt5s0yoi62
       type: object
       properties:
         status:
@@ -79,6 +79,9 @@ components:
         example:
           status: 200
     User:
+      title: User
+      x-stoplight:
+        id: ytbkmo52q3lal
       type: object
       x-examples:
         example:

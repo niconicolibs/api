@@ -1,0 +1,56 @@
+title: User
+x-stoplight:
+  id: ytbkmo52q3lal
+type: object
+x-examples:
+  example:
+    userId: '2'
+    nickname: 戀塚
+    description: |
+      （・＿・）ノ<br>
+      http://twitter.com/koizuka<br>
+      http://b.hatena.ne.jp/koizuka<br>
+    hasPremiumOrStrongerRights: true
+    hasSuperPremiumOrStrongerRights: false
+    icons:
+      urls:
+        150x150: 'https://secure-dcdn.cdn.nimg.jp/nicoaccount/usericon/0/2.jpg?1305362341'
+        50x50: 'https://secure-dcdn.cdn.nimg.jp/nicoaccount/usericon/s/0/2.jpg?1305362341'
+properties:
+  userId:
+    type: string
+    description: ユーザーID
+  nickname:
+    type: string
+    description: ニックネーム
+  description:
+    type: string
+    description: プロフィール
+  hasPremiumOrStrongerRights:
+    type: boolean
+    description: プレミアム会員かどうか
+  hasSuperPremiumOrStrongerRights:
+    type: boolean
+  icons:
+    type: object
+    required:
+      - urls
+    description: プロフィールアイコン
+    properties:
+      urls:
+        type: object
+        required:
+          - 150x150
+          - 50x50
+        properties:
+          150x150:
+            type: string
+          50x50:
+            type: string
+required:
+  - userId
+  - nickname
+  - description
+  - hasPremiumOrStrongerRights
+  - hasSuperPremiumOrStrongerRights
+  - icons
