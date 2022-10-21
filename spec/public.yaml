@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.1.0
 info:
   title: Public API
   version: 1.0.0
@@ -28,6 +28,24 @@ paths:
                       $ref: '#/components/schemas/User'
                 required:
                   - meta
+              examples:
+                example:
+                  value:
+                    meta:
+                      status: 200
+                    data:
+                      - userId: '2'
+                        nickname: 戀塚
+                        description: |
+                          （・＿・）ノ<br>
+                          http://twitter.com/koizuka<br>
+                          http://b.hatena.ne.jp/koizuka<br>
+                        hasPremiumOrStrongerRights: true
+                        hasSuperPremiumOrStrongerRights: false
+                        icons:
+                          urls:
+                            150x150: 'https://secure-dcdn.cdn.nimg.jp/nicoaccount/usericon/0/2.jpg?1305362341'
+                            50x50: 'https://secure-dcdn.cdn.nimg.jp/nicoaccount/usericon/s/0/2.jpg?1305362341'
       operationId: get-v1-users.json
       description: |-
         指定したユーザーIDの簡易的なユーザー情報を取得します。
