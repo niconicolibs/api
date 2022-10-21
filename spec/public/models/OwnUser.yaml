@@ -1,0 +1,75 @@
+type: object
+properties:
+  userId:
+    type: string
+  nickname:
+    type: string
+  description:
+    type: string
+  language:
+    type: string
+  locale:
+    type: string
+  area:
+    type: string
+  timezone:
+    type: string
+  isExplicitlyLoginable:
+    type: boolean
+  hasPremiumOrStrongerRights:
+    type: boolean
+  hasSuperPremiumOrStrongerRights:
+    type: boolean
+  premium:
+    type: object
+    properties:
+      type:
+        type: string
+  icons:
+    type: object
+    properties:
+      urls:
+        type: object
+        properties:
+          150x150:
+            type: string
+          50x50:
+            type: string
+  existence:
+    type: object
+    properties:
+      residence:
+        type: object
+        properties:
+          country:
+            type: string
+          prefecture:
+            type: string
+      birthday:
+        type: string
+      sex:
+        type: string
+x-examples:
+  Example 1:
+    userId: '12345'
+    nickname: ユーザー名
+    description: 'ここはdescription'
+    language: ja-jp
+    locale: ja-JP
+    area: JP
+    timezone: Asia/Tokyo
+    isExplicitlyLoginable: true
+    hasPremiumOrStrongerRights: true
+    hasSuperPremiumOrStrongerRights: false
+    premium:
+      type: premium
+    icons:
+      urls:
+        150x150: 'https://secure-dcdn.cdn.nimg.jp/nicoaccount/usericon/defaults/blank.jpg'
+        50x50: 'https://secure-dcdn.cdn.nimg.jp/nicoaccount/usericon/defaults/blank.jpg'
+    existence:
+      residence:
+        country: Japan
+        prefecture: 東京都
+      birthday: '1990-01-01'
+      sex: male
