@@ -42,3 +42,8 @@ body {
 .swagger-ui .model {
     font-size: 14px;
 }
+
+.topbar
+{
+    display: none;
+}
