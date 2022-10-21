@@ -1,0 +1,54 @@
+openapi: 3.0.0
+x-stoplight:
+  id: emlpc48xqf234
+info:
+  title: Nicovideo API
+  version: 1.0.0
+  description: ニコニコ動画に関する情報を取得するAPI
+servers:
+  - url: 'https://nvapi.nicovideo.jp'
+paths:
+  '/v1/users/{userId}':
+    parameters:
+      - schema:
+          type: integer
+        name: userId
+        in: path
+        required: true
+        description: ユーザーID
+    get:
+      summary: Get User Information
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  meta:
+                    $ref: ./models/Meta.yaml
+                required:
+                  - meta
+      operationId: get-v1-users-userId
+      description: 指定したユーザーIDの詳細なユーザー情報を取得します。
+      parameters:
+        - schema:
+            type: number
+            example: 6
+          in: header
+          name: x-Frontend-Id
+          description: '6'
+          required: true
+        - schema:
+            type: string
+            example: '0'
+          in: header
+          name: x-Frontend-version
+          description: '0'
+          required: true
+      tags:
+        - User
+components:
+  schemas: {}
+  securitySchemes: {}
