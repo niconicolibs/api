@@ -49,6 +49,48 @@ paths:
                             description: ログイン中のユーザーかどうか
                 required:
                   - meta
+              examples:
+                example:
+                  value:
+                    meta:
+                      status: 200
+                    data:
+                      user:
+                        description: 'さとうささら推しの動画投稿者。<br>チャンネル：<a href="https://nicochannel.jp/taitanu/" target="_blank" rel="noopener nofollow">https://nicochannel.jp/taitanu/</a><br><br>イラスト：<a href="https://seiga.nicovideo.jp/user/illust/41035256" target="_blank" rel="noopener nofollow">https://seiga.nicovideo.jp/user/illust/41035256</a><br>Twitter：<a href="https://twitter.com/Taitan_F" target="_blank" rel="noopener nofollow">https://twitter.com/Taitan_F</a><br>アイコンはトゥーミさんよりお借りしています！'
+                        decoratedDescriptionHtml: 'さとうささら推しの動画投稿者。<br>チャンネル：<a href="https://nicochannel.jp/taitanu/" target="_blank" rel="noopener nofollow">https://nicochannel.jp/taitanu/</a><br><br>イラスト：<a href="https://seiga.nicovideo.jp/user/illust/41035256" target="_blank" rel="noopener nofollow">https://seiga.nicovideo.jp/user/illust/41035256</a><br>Twitter：<a href="https://twitter.com/Taitan_F" target="_blank" rel="noopener nofollow">https://twitter.com/Taitan_F</a><br>アイコンはトゥーミさんよりお借りしています！'
+                        strippedDescription: 'さとうささら推しの動画投稿者。チャンネル：https://nicochannel.jp/taitanu/イラスト：https://seiga.nicovideo.jp/user/illust/41035256Twitter：https://twitter.com/Taitan_Fアイコンはトゥーミさんよりお借りしています！'
+                        isPremium: true
+                        registeredVersion: (GINZA)
+                        followeeCount: 168
+                        followerCount: 65454
+                        userLevel:
+                          currentLevel: 171
+                          nextLevelThresholdExperience: 46000
+                          nextLevelExperience: 36208
+                          currentLevelExperience: 9792
+                        userChannel: null
+                        isNicorepoReadable: true
+                        sns:
+                          - type: twitter
+                            label: Twitter
+                            iconUrl: 'https://nicovideo.cdn.nimg.jp/web/images/sns_icon/twitter.png'
+                            screenName: Taitan_F
+                            url: 'https://twitter.com/Taitan_F'
+                          - type: youtube
+                            label: YouTube
+                            iconUrl: 'https://nicovideo.cdn.nimg.jp/web/images/sns_icon/youtube.png'
+                            screenName: UC32Qg0Ul1iKjOeLljIukCgg
+                            url: 'https://www.youtube.com/channel/UC32Qg0Ul1iKjOeLljIukCgg'
+                        coverImage: null
+                        id: 41035256
+                        nickname: たいたぬ
+                        icons:
+                          small: 'https://secure-dcdn.cdn.nimg.jp/nicoaccount/usericon/s/4103/41035256.jpg?1538414941'
+                          large: 'https://secure-dcdn.cdn.nimg.jp/nicoaccount/usericon/4103/41035256.jpg?1538414941'
+                      relationships:
+                        sessionUser:
+                          isFollowing: true
+                        isMe: false
       operationId: get-v1-users-userId
       description: 指定したユーザーIDの詳細なユーザー情報を取得します。
       parameters:
@@ -57,14 +99,14 @@ paths:
             example: 6
           in: header
           name: x-Frontend-Id
-          description: '6'
+          description: PC版は6固定
           required: true
         - schema:
             type: string
             example: '0'
           in: header
           name: x-Frontend-version
-          description: '0'
+          description: PC版は0固定
           required: true
         - schema:
             type: string
