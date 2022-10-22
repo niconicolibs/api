@@ -2,19 +2,26 @@
 <html lang="ja">
   <head>
     <meta charset="UTF-8">
-    <title>nvapi | ニコ動非公式APIドキュメント</title>
-    <meta charset="utf-8"/>
+    <title>nvapi | ニコニコ非公式APIドキュメント</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="../static/favicon32x32.png" sizes="32x32">
+    <link rel="icon" href="../static/favicon16x16.png" sizes="16x16">
+    <link rel="stylesheet" href="../static/index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,700|Roboto:300,400,700" rel="stylesheet">
-    <style>
-      body {
-        margin: 0;
-        padding: 0;
-      }
-    </style>
   </head>
   <body>
-    <redoc spec-url="../spec/nvapi/nvapi.yaml" hideDownloadButton="true" schemaExpansionLevel="all" jsonSampleExpandLevel="all" pathInMiddlePanel="true" sideNavStyle="path-only"></redoc>
+    <header>
+      <a class="logoLink headerLink" href="../index.html">ニコニコ非公式APIドキュメント</a>
+      <a href="../index.html" class="headerLink">top</a>
+      <a href="../public/index.html" class="headerLink">public</a>
+      <a href="../nvapi/index.html" class="headerLink active">nvapi</a>
+    </header>
+    <main>
+      <redoc spec-url="../spec/nvapi/nvapi.yaml" hideDownloadButton="true" schemaExpansionLevel="all" jsonSampleExpandLevel="all" pathInMiddlePanel="true" sideNavStyle="path-only"></redoc>
+    </main>
     <script src="https://cdn.redoc.ly/redoc/latest/bundles/redoc.standalone.js"> </script>
   </body>
 </html>

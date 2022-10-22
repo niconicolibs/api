@@ -12,39 +12,60 @@ html {
 
 body {
     margin: 0;
+    padding: 0;
     background: #fafafa;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    color: white;
+    background: #252525;
+    padding-left: 10px;
+    font-family: 'Noto Sans', sans-serif !important;
+    gap: 15px;
+}
+
+a.headerLink {
+    color: white;
+    text-decoration: none;
+    font-size: 23px;
+    margin-top: 7px;
+}
+
+a.logoLink {
+    display: flex;
+    flex-direction: row;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+a.active {
+    font-weight: bold;
+}
+
+img.logo {
+    width: 40px;
+    height: 40px;
+    margin: 5px;
+}
+
+main {
+    height: auto;
+}
+
+main.index {
+    margin-left: 5%;
+    margin-right: 5%;
 }
 
 a {
     color: black;
-}
-
-.swagger-ui .opblock-body pre,
-.swagger-ui .response-col_description__inner div.markdown {
-    font-size: 15px;
-    font-style: normal;
-    font-weight: normal;
-}
-
-.swagger-ui .opblock-body pre {
-    font-family: "Courier New", Consolas, monospace;
-}
-
-.responses-table .response {
-    border-top: 1px solid rgba(59,65,81,.2);
-}
-
-.swagger-ui .response-col_status {
-    text-align: right;
-    padding-right: 15px !important;
-}
-
-.swagger-ui table tbody tr td {
-    padding-bottom: 10px;
-}
-
-.swagger-ui .model {
-    font-size: 14px;
 }
 
 .topbar

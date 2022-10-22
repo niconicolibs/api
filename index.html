@@ -3,15 +3,30 @@
 <html lang="ja">
   <head>
     <meta charset="UTF-8">
-    <title>ニコ動非公式APIドキュメント</title>
+    <title>ニコニコ非公式APIドキュメント</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="../static/favicon32x32.png" sizes="32x32">
+    <link rel="icon" href="../static/favicon16x16.png" sizes="16x16">
     <link rel="stylesheet" type="text/css" href="./static/index.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,700|Roboto:300,400,700" rel="stylesheet">
   </head>
-
   <body>
-    <h1>ニコ動非公式APIドキュメント</h1>
-    <h3><a href="/api/public">Public API</a></h3>
-    <p>主にニコニコ全体に共通する情報を取得するためのAPI</p>
-    <h3><a href="/api/nvapi">Nicovideo API</a></h3>
-    <p>ニコニコ動画に関する情報を取得するAPI</p>
+    <header>
+      <a class="logoLink headerLink" href="./index.html">ニコニコ非公式APIドキュメント</a>
+      <a href="./index.html" class="headerLink active">top</a>
+      <a href="./public/index.html" class="headerLink">public</a>
+      <a href="./nvapi/index.html" class="headerLink">nvapi</a>
+    </header>
+    <main class="index">
+      <h1>ニコニコ非公式APIドキュメント</h1>
+      <p style="color: red;font-weight: bold;font-size:150%;">※悪用厳禁・使用は自己責任でお願いします。</p>
+      <h3><a href="/api/public">Public API</a></h3>
+      <p>主にニコニコ全体に共通する情報を取得するためのAPI</p>
+      <h3><a href="/api/nvapi">Nicovideo API</a></h3>
+      <p>ニコニコ動画に関する情報を取得するAPI</p>
+    </main>
   </body>
 </html>
