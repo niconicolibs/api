@@ -14,13 +14,16 @@
   </head>
   <body>
     <header>
-      <a class="logoLink headerLink" href="../index.html">ニコニコ非公式APIドキュメント</a>
+      <a class="logoLink" href="../index.html">
+        <img src="../static/logo.png" class="logo">
+        <p>ニコニコ非公式APIドキュメント</p>
+      </a>
       <a href="../index.html" class="headerLink">top</a>
       <a href="../public/index.html" class="headerLink">public</a>
       <a href="../nvapi/index.html" class="headerLink active">nvapi</a>
     </header>
     <main>
-      <redoc spec-url="../spec/nvapi/nvapi.yaml" hideDownloadButton="true" schemaExpansionLevel="all" jsonSampleExpandLevel="all" pathInMiddlePanel="true" sideNavStyle="path-only"></redoc>
+      <redoc spec-url="../spec/nvapi/nvapi.yaml" hideDownloadButton schemaExpansionLevel="all" jsonSampleExpandLevel="all" pathInMiddlePanel sideNavStyle="path-only"></redoc>
     </main>
     <script src="https://cdn.redoc.ly/redoc/latest/bundles/redoc.standalone.js"> </script>
   </body>

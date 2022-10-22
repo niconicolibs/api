@@ -16,9 +16,15 @@ body {
     background: #fafafa;
     display: flex;
     flex-direction: column;
+    padding-top: 50px;
 }
 
 header {
+    width: 100%;
+    box-sizing: border-box;
+    position: fixed;
+    top: 0;
+    left: 0;
     height: 50px;
     display: flex;
     flex-direction: row;
@@ -33,7 +39,7 @@ a.headerLink {
     color: white;
     text-decoration: none;
     font-size: 23px;
-    margin-top: 7px;
+    margin-top: 10px;
 }
 
 a.logoLink {
@@ -42,7 +48,11 @@ a.logoLink {
     color: white;
     text-decoration: none;
     font-weight: bold;
+    font-size: 23px;
     margin-right: 10px;
+}
+a.logoLink > p{
+    margin-top: 10px;
 }
 
 a.active {
@@ -50,9 +60,9 @@ a.active {
 }
 
 img.logo {
-    width: 40px;
-    height: 40px;
-    margin: 5px;
+    width: 36px;
+    height: 36px;
+    margin: 7px;
 }
 
 main {
