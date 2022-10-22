@@ -1,0 +1,55 @@
+type: object
+properties:
+  type:
+    type: string
+  followerCount:
+    type: integer
+  videoCount:
+    type: integer
+  liveCount:
+    type: integer
+  relationships:
+    type: object
+    properties:
+      sessionUser:
+        type: object
+        properties:
+          isFollowing:
+            type: boolean
+  isPremium:
+    type: boolean
+  description:
+    type: string
+  strippedDescription:
+    type: string
+  shortDescription:
+    type: string
+  id:
+    type: integer
+  nickname:
+    type: string
+  icons:
+    type: object
+    properties:
+      small:
+        type: string
+      large:
+        type: string
+x-examples:
+  example-1:
+    type: userSearch
+    followerCount: 67877
+    videoCount: 1329
+    liveCount: 478
+    relationships:
+      sessionUser:
+        isFollowing: true
+    isPremium: true
+    description: 'VOICEROID実況者でありゆっくり実況者であり解説動画制作者であり薬剤師でもある魚です。アイコンはシカさん（@kushiyakimo）に描いていただきました！強そう！<br>コミュニティ作りました！→co3794816<br>Twitter→@iwashi_pharm         Youtube→https://www.youtube.com/channel/UCcLWyYVS3ysazvYjN7pKXuw '
+    strippedDescription: 'VOICEROID実況者でありゆっくり実況者であり解説動画制作者であり薬剤師でもある魚です。アイコンはシカさん（@kushiyakimo）に描いていただきました！強そう！コミュニティ作りました！→co3794816Twitter→@iwashi_pharm         Youtube→https://www.youtube.com/channel/UCcLWyYVS3ysazvYjN7pKXuw '
+    shortDescription: VOICEROID実況者でありゆっくり実況者であり解説動画制作者であり薬剤師でもある魚です。アイコン
+    id: 15086302
+    nickname: いわし＠超ビビリ
+    icons:
+      small: 'https://secure-dcdn.cdn.nimg.jp/nicoaccount/usericon/s/1508/15086302.jpg?1531036390'
+      large: 'https://secure-dcdn.cdn.nimg.jp/nicoaccount/usericon/1508/15086302.jpg?1531036390'

@@ -619,6 +619,62 @@ paths:
           name: page
       tags:
         - Users
+  '/v1/users/{userId}/creator-support':
+    parameters:
+      - schema:
+          type: integer
+        name: userId
+        in: path
+        required: true
+        description: ユーザーID
+    get:
+      summary: Your GET endpoint
+      tags:
+        - Users
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  meta:
+                    $ref: ./models/Meta.yaml
+                  data:
+                    type: object
+                    properties:
+                      creatorSupport:
+                        type: object
+                        properties:
+                          isSupportable:
+                            type: boolean
+                          canOpenCreatorSupport:
+                            type: boolean
+                          supporterStatus:
+                            type: object
+                            properties:
+                              isSupporting:
+                                type: boolean
+                              isBanned:
+                                type: boolean
+      operationId: get-v1-users-userId-creator-support
+      description: 指定したユーザーIDのクリエイターサポートに関する情報を取得します
+      parameters:
+        - schema:
+            type: integer
+            default: 6
+          in: header
+          name: x-Frontend-Id
+          description: 固定で6
+          required: true
+        - schema:
+            type: integer
+            default: 0
+          in: header
+          name: x-Frontend-Version
+          description: 固定で0
+          required: true
   /v2/search/video:
     get:
       summary: Search Videos By Keyword or Tag
@@ -661,7 +717,7 @@ paths:
                       items:
                         type: array
                         items:
-                          $ref: ./models/Movie.yaml
+                          $ref: ./models/EssentialVideo.yaml
                       additionals:
                         type: object
                         properties:
@@ -858,6 +914,452 @@ paths:
           in: query
           name: maxDuration
           description: 最長の動画長さ(秒)
+  /v2/search/facet:
+    get:
+      summary: Get Facet of Videos  By Keyword or Tag
+      tags:
+        - Search
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  meta:
+                    $ref: ./models/Meta.yaml
+                  data:
+                    type: object
+                    properties:
+                      items:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            genre:
+                              type: object
+                              properties:
+                                key:
+                                  type: string
+                                label:
+                                  type: string
+                            count:
+                              type: integer
+              examples:
+                example:
+                  value:
+                    meta:
+                      status: 200
+                    data:
+                      items:
+                        - genre:
+                            key: entertainment
+                            label: エンターテイメント
+                          count: 4
+                        - genre:
+                            key: radio
+                            label: ラジオ
+                          count: 0
+                        - genre:
+                            key: music_sound
+                            label: 音楽・サウンド
+                          count: 0
+                        - genre:
+                            key: dance
+                            label: ダンス
+                          count: 0
+                        - genre:
+                            key: animal
+                            label: 動物
+                          count: 0
+                        - genre:
+                            key: nature
+                            label: 自然
+                          count: 0
+                        - genre:
+                            key: cooking
+                            label: 料理
+                          count: 0
+                        - genre:
+                            key: traveling_outdoor
+                            label: 旅行・アウトドア
+                          count: 0
+                        - genre:
+                            key: vehicle
+                            label: 乗り物
+                          count: 0
+                        - genre:
+                            key: sports
+                            label: スポーツ
+                          count: 0
+                        - genre:
+                            key: society_politics_news
+                            label: 社会・政治・時事
+                          count: 0
+                        - genre:
+                            key: technology_craft
+                            label: 技術・工作
+                          count: 0
+                        - genre:
+                            key: commentary_lecture
+                            label: 解説・講座
+                          count: 0
+                        - genre:
+                            key: anime
+                            label: アニメ
+                          count: 0
+                        - genre:
+                            key: game
+                            label: ゲーム
+                          count: 708
+                        - genre:
+                            key: other
+                            label: その他
+                          count: 0
+                        - genre:
+                            key: r18
+                            label: R-18
+                          count: 0
+      operationId: get-v2-search-facet
+      description: |-
+        指定した条件で検索した動画の各ジャンルごとの動画数を取得します
+        **QueryParamsのkeywordとtagはどちらかを必ず指定しなければなりません**
+      parameters:
+        - schema:
+            type: integer
+            default: 6
+          in: header
+          name: X-Frontend-Id
+          description: 固定で6
+          required: true
+        - schema:
+            type: integer
+            default: 0
+          in: header
+          name: X-Frontend-Version
+          description: 固定で0
+          required: true
+        - schema:
+            type: string
+          in: query
+          name: keyword
+          description: キーワード検索
+          required: true
+        - schema:
+            type: string
+          in: query
+          name: tag
+          description: タグ検索
+          required: true
+        - schema:
+            type: string
+          in: query
+          name: sensitiveContents
+        - schema:
+            type: array
+            default:
+              - game
+              - entertainment
+          in: query
+          name: genres
+          description: ジャンル
+        - schema:
+            type: string
+            example: included
+          in: query
+          name: channelVideoListingStatus
+          description: チャンネル動画を表示するか
+        - schema:
+            type: boolean
+            example: true
+          in: query
+          name: allowFutureContents
+          description: 未来のコンテンツを表示するか
+        - schema:
+            type: boolean
+            example: true
+          in: query
+          name: searchByUser
+          description: ユーザー情報に基づき表示するか
+        - schema:
+            type: string
+            example: '2022-10-22T23:21:55+09:00'
+          in: query
+          name: minRegisteredAt
+          description: よりも後に投稿された動画
+        - schema:
+            type: string
+            example: '2022-10-22T23:21:55+09:00'
+          in: query
+          name: maxRegisteredAt
+          description: よりも前に投稿された動画
+        - schema:
+            type: integer
+            example: 300
+          in: query
+          name: maxDuration
+          description: 最長の動画長さ(秒)
+    parameters: []
+  /v1/search/user:
+    get:
+      summary: Search User By Keyword
+      tags:
+        - Search
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  meta:
+                    $ref: ./models/Meta.yaml
+                  data:
+                    type: object
+                    properties:
+                      requestId:
+                        type: string
+                      totalCount:
+                        type: integer
+                      hasNext:
+                        type: boolean
+                      items:
+                        type: array
+                        items:
+                          $ref: ./models/SearchUser.yaml
+              examples:
+                example:
+                  value:
+                    meta:
+                      status: 200
+                    data:
+                      requestId: 3c112e28-d1ae-44ea-b1cd-116f0e3bf111
+                      totalCount: 11977
+                      hasNext: true
+                      items:
+                        - type: userSearch
+                          followerCount: 67877
+                          videoCount: 1329
+                          liveCount: 478
+                          relationships:
+                            sessionUser:
+                              isFollowing: true
+                          isPremium: true
+                          description: 'VOICEROID実況者でありゆっくり実況者であり解説動画制作者であり薬剤師でもある魚です。アイコンはシカさん（@kushiyakimo）に描いていただきました！強そう！<br>コミュニティ作りました！→co3794816<br>Twitter→@iwashi_pharm         Youtube→https://www.youtube.com/channel/UCcLWyYVS3ysazvYjN7pKXuw '
+                          strippedDescription: 'VOICEROID実況者でありゆっくり実況者であり解説動画制作者であり薬剤師でもある魚です。アイコンはシカさん（@kushiyakimo）に描いていただきました！強そう！コミュニティ作りました！→co3794816Twitter→@iwashi_pharm         Youtube→https://www.youtube.com/channel/UCcLWyYVS3ysazvYjN7pKXuw '
+                          shortDescription: VOICEROID実況者でありゆっくり実況者であり解説動画制作者であり薬剤師でもある魚です。アイコン
+                          id: 15086302
+                          nickname: いわし＠超ビビリ
+                          icons:
+                            small: 'https://secure-dcdn.cdn.nimg.jp/nicoaccount/usericon/s/1508/15086302.jpg?1531036390'
+                            large: 'https://secure-dcdn.cdn.nimg.jp/nicoaccount/usericon/1508/15086302.jpg?1531036390'
+      operationId: get-v1-search-user
+      parameters:
+        - schema:
+            type: integer
+            default: 6
+          in: header
+          name: X-Frontend-Id
+          description: 固定で6
+        - schema:
+            type: integer
+            default: 0
+          in: header
+          name: X-Frontend-Version
+          description: 固定で0
+        - schema:
+            type: string
+          in: query
+          name: keyword
+          required: true
+        - schema:
+            type: string
+            default: _personalized
+            enum:
+              - _personalized
+              - followerCount
+              - videoCount
+              - liveCount
+          in: query
+          name: sortKey
+        - schema:
+            type: integer
+            default: 100
+          in: query
+          name: pageSize
+        - schema:
+            type: integer
+            default: 1
+          in: query
+          name: page
+        - schema:
+            type: string
+          in: cookie
+          name: user-session
+          description: ユーザーセッション(なくても機能します)
+      description: ユーザーを指定した条件で検索します
+  /v1/search/list:
+    get:
+      summary: Search Lists or Series By Keyword
+      tags:
+        - Search
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  meta:
+                    $ref: ./models/Meta.yaml
+                  data:
+                    type: object
+                    properties:
+                      searchId:
+                        type: string
+                      totalCount:
+                        type: integer
+                      hasNext:
+                        type: boolean
+                      items:
+                        type: array
+                        items:
+                          $ref: ./models/MinimamList.yaml
+      operationId: get-v1-search-list
+      description: マイリスト及びシリーズを指定した条件で取得する
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: keyword
+          required: true
+        - schema:
+            type: string
+            enum:
+              - _hotTotalScore
+              - videoCount
+              - startTime
+            default: _hotTotalScore
+          in: query
+          name: sortKey
+        - schema:
+            type: string
+            enum:
+              - mylist
+              - series
+          in: query
+          name: types
+          description: 未指定だとどちらも
+        - schema:
+            type: string
+          in: query
+          name: pageSize
+        - schema:
+            type: string
+          in: query
+          name: page
+  /v1/new-arrival/videos:
+    get:
+      summary: Get New Arrival Videos
+      tags:
+        - Search
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  meta:
+                    $ref: ./models/Meta.yaml
+                  data:
+                    type: object
+                    properties:
+                      hasNext:
+                        type: boolean
+                      items:
+                        type: array
+                        items:
+                          $ref: ./models/EssentialVideo.yaml
+              examples:
+                example:
+                  value:
+                    meta:
+                      status: 200
+                    data:
+                      hasNext: true
+                      items:
+                        - type: essential
+                          id: sm41268668
+                          title: YOUKAI ZOSHIGAYA 【F-10】
+                          registeredAt: '2022-10-23T01:15:03+09:00'
+                          count:
+                            view: 0
+                            comment: 0
+                            mylist: 0
+                            like: 0
+                          thumbnail:
+                            url: 'http://nicovideo.cdn.nimg.jp/thumbnails/41268668/41268668.35633386'
+                            middleUrl: 'http://nicovideo.cdn.nimg.jp/thumbnails/41268668/41268668.35633386.M'
+                            largeUrl: 'http://nicovideo.cdn.nimg.jp/thumbnails/41268668/41268668.35633386.L'
+                            listingUrl: 'http://nicovideo.cdn.nimg.jp/thumbnails/41268668/41268668.35633386.M'
+                            nHdUrl: 'http://img.cdn.nimg.jp/s/nicovideo/thumbnails/41268668/41268668.35633386.original/r640x360l?key=56aad85a188b582b1796d570aebcc4df62d4890bffd9f6b9165f4c4cba110213'
+                          duration: 37
+                          shortDescription: 'https://www.youtube.com/watch?v=8zEc0Z4bCIk'
+                          latestCommentSummary: ''
+                          isChannelVideo: false
+                          isPaymentRequired: false
+                          playbackPosition: null
+                          owner:
+                            ownerType: user
+                            type: user
+                            visibility: visible
+                            id: '126361504'
+                            name: FERNANDEZ
+                            iconUrl: 'https://secure-dcdn.cdn.nimg.jp/nicoaccount/usericon/defaults/blank.jpg'
+                          requireSensitiveMasking: false
+                          videoLive: null
+                          isMuted: false
+                          9d091f87: false
+                          acf68865: false
+                      createdAt: '2022-10-23T01:16:03+09:00'
+      operationId: get-v1-new-arrival-videos
+      parameters:
+        - schema:
+            type: integer
+            default: 6
+          in: header
+          name: X-Frontend-Id
+          description: 固定で6
+          required: true
+        - schema:
+            type: integer
+            default: 0
+          in: header
+          name: X-Frontend-Version
+          description: 固定で0
+          required: true
+        - schema:
+            type: integer
+          in: query
+          name: pageSize
+          required: true
+        - schema:
+            type: integer
+          in: query
+          name: page
+          required: true
+        - schema:
+            type: string
+            example: mask
+          in: query
+          name: sensitiveContents
+          description: mask
+      description: 新着動画の取得
 components:
   schemas: {}
   securitySchemes: {}

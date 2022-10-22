@@ -190,7 +190,7 @@ properties:
         status:
           type: string
         video:
-          $ref: ./Movie.yaml
+          $ref: ./EssentialVideo.yaml
   followerCount:
     type: integer
   createdAt:

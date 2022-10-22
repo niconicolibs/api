@@ -1,0 +1,49 @@
+type: object
+x-examples:
+  example-1:
+    id: 71080656
+    type: mylist
+    title: モリスレイ
+    description: |-
+      Twitter▶https://twitter.com/raymorris42
+      YouTube▶https://t.co/RprMGzKw1A?amp=1
+    thumbnailUrl: 'https://nicovideo.cdn.nimg.jp/thumbnails/38557313/38557313.64356034.M'
+    videoCount: 70
+    owner:
+      ownerType: user
+      type: user
+      visibility: visible
+      id: '118007309'
+      name: モリス レイ
+      iconUrl: 'https://secure-dcdn.cdn.nimg.jp/nicoaccount/usericon/11800/118007309.jpg?1629882825'
+properties:
+  id:
+    type: integer
+    enum:
+      - mylist
+      - series
+  type:
+    type: string
+  title:
+    type: string
+  description:
+    type: string
+  thumbnailUrl:
+    type: string
+  videoCount:
+    type: integer
+  owner:
+    type: object
+    properties:
+      ownerType:
+        type: string
+      type:
+        type: string
+      visibility:
+        type: string
+      id:
+        type: string
+      name:
+        type: string
+      iconUrl:
+        type: string

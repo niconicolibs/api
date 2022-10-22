@@ -1,0 +1,81 @@
+title: EssentialVideo
+x-stoplight:
+  id: 9njnreuu8k9sa
+type: object
+properties:
+      type:
+        type: string
+      id:
+        type: string
+      title:
+        type: string
+      registeredAt:
+        type: string
+      count:
+        type: object
+        properties:
+          view:
+            type: integer
+          comment:
+            type: integer
+          mylist:
+            type: integer
+          like:
+            type: integer
+      thumbnail:
+        type: object
+        properties:
+          url:
+            type: string
+          middleUrl:
+            type: string
+          largeUrl:
+            type: string
+          listingUrl:
+            type: string
+          nHdUrl:
+            type: string
+      duration:
+        type: integer
+      shortDescription:
+        type: string
+      latestCommentSummary:
+        type: string
+      isChannelVideo:
+        type: boolean
+      isPaymentRequired:
+        type: boolean
+      playbackPosition:
+        type:
+          - 'null'
+          - integer
+      owner:
+        type: object
+        properties:
+          ownerType:
+            type: string
+          type:
+            type: string
+          visibility:
+            type: string
+          id:
+            type: string
+          name:
+            type: string
+          iconUrl:
+            type: string
+      requireSensitiveMasking:
+        type: boolean
+      videoLive:
+        type:
+          - 'null'
+          - object
+        properties:
+          liveStartTime:
+            type: string
+      isMuted:
+        type: boolean
+      9d091f87:
+        type: boolean
+      acf68865:
+        type: boolean
