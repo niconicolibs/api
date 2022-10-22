@@ -1,0 +1,199 @@
+type: object
+x-examples:
+  example-1:
+    id: 71043760
+    isPublic: true
+    name: エモクロア
+    description: ''
+    decoratedDescriptionHtml: ''
+    defaultSortKey: addedAt
+    defaultSortOrder: desc
+    itemsCount: 47
+    owner:
+      ownerType: user
+      type: user
+      visibility: visible
+      id: '13647798'
+      name: ニコライ・ボルコフ
+      iconUrl: 'https://secure-dcdn.cdn.nimg.jp/nicoaccount/usericon/1364/13647798.jpg?1596133406'
+    sampleItems:
+      - itemId: 1636916342
+        watchId: sm39625514
+        description: ''
+        decoratedDescriptionHtml: ''
+        addedAt: '2021-11-15T12:01:05+09:00'
+        status: public
+        video:
+          type: essential
+          id: sm39625514
+          title: 【エモクロアTRPG】VOICEROID投稿者たちで行くオトギバラシ　最終話【実卓リプレイ】
+          registeredAt: '2021-11-15T03:59:02+09:00'
+          count:
+            view: 50839
+            comment: 1295
+            mylist: 67
+            like: 2845
+          thumbnail:
+            url: 'https://nicovideo.cdn.nimg.jp/thumbnails/39625514/39625514.73290553'
+            middleUrl: 'https://nicovideo.cdn.nimg.jp/thumbnails/39625514/39625514.73290553.M'
+            largeUrl: 'https://nicovideo.cdn.nimg.jp/thumbnails/39625514/39625514.73290553.L'
+            listingUrl: 'https://nicovideo.cdn.nimg.jp/thumbnails/39625514/39625514.73290553.M'
+            nHdUrl: 'https://img.cdn.nimg.jp/s/nicovideo/thumbnails/39625514/39625514.73290553.original/r640x360l?key=45769adeffe2439b2e7da95631445d623772b18093c6cf5dcf0ee52bd682115e'
+          duration: 442
+          shortDescription: ニコニコ動画プレミアムアワード１位とりました！皆さんありがとうございました！今回の参加者のえぞうさん
+          latestCommentSummary: '介護させられずｗｗｗ いやーwwペニーワイズとジョージの奴がおもろ過ぎてちょっとね 88888 ←力が失われたのなら倒しても絵本がワスレモノの能力を行使できないのでは 駄犬さんたまにサイコよねｗｗ 草 かわいい あっ ここすき [いいくるめ]しようと...'
+          isChannelVideo: false
+          isPaymentRequired: false
+          playbackPosition: null
+          owner:
+            ownerType: user
+            type: user
+            visibility: visible
+            id: '13647798'
+            name: ニコライ・ボルコフ
+            iconUrl: 'https://secure-dcdn.cdn.nimg.jp/nicoaccount/usericon/1364/13647798.jpg?1596133406'
+          requireSensitiveMasking: false
+          videoLive: null
+          isMuted: false
+          9d091f87: false
+          acf68865: false
+      - itemId: 1636711266
+        watchId: sm39613118
+        description: ''
+        decoratedDescriptionHtml: ''
+        addedAt: '2021-11-12T19:08:58+09:00'
+        status: public
+        video:
+          type: essential
+          id: sm39613118
+          title: 【エモクロアTRPG】VOICEROID投稿者たちで行くオトギバラシ　第十六話【実卓リプレイ】
+          registeredAt: '2021-11-12T19:01:02+09:00'
+          count:
+            view: 37639
+            comment: 788
+            mylist: 40
+            like: 2096
+          thumbnail:
+            url: 'https://nicovideo.cdn.nimg.jp/thumbnails/39613118/39613118.39786212'
+            middleUrl: 'https://nicovideo.cdn.nimg.jp/thumbnails/39613118/39613118.39786212.M'
+            largeUrl: 'https://nicovideo.cdn.nimg.jp/thumbnails/39613118/39613118.39786212.L'
+            listingUrl: 'https://nicovideo.cdn.nimg.jp/thumbnails/39613118/39613118.39786212.M'
+            nHdUrl: 'https://img.cdn.nimg.jp/s/nicovideo/thumbnails/39613118/39613118.39786212.original/r640x360l?key=288f825cf705119a6302561207e9d5202afc42c45a019043bde6cf376654fe98'
+          duration: 579
+          shortDescription: コミケ受かりました！木曜日　西地区“い”ブロック－08b です！よろしくお願いいたします！今回の参加
+          latestCommentSummary: 3人共納得してるんならこっちとしては止める理由もないような ペニーとの会話であったな モンタナはかわいいなあ… 草 音源全然違うけど東方みたいなBGMだ 自分達が死にそうなんですが… 草 やったぜ ぐへへ かわいい 呼ばなくても来てくれるんだやっぱ ...
+          isChannelVideo: false
+          isPaymentRequired: false
+          playbackPosition: null
+          owner:
+            ownerType: user
+            type: user
+            visibility: visible
+            id: '13647798'
+            name: ニコライ・ボルコフ
+            iconUrl: 'https://secure-dcdn.cdn.nimg.jp/nicoaccount/usericon/1364/13647798.jpg?1596133406'
+          requireSensitiveMasking: false
+          videoLive: null
+          isMuted: false
+          9d091f87: false
+          acf68865: false
+      - itemId: 1636647066
+        watchId: sm39610651
+        description: ''
+        decoratedDescriptionHtml: ''
+        addedAt: '2021-11-12T18:43:26+09:00'
+        status: public
+        video:
+          type: essential
+          id: sm39610651
+          title: 【エモクロアTRPG】VOICEROID投稿者たちで行くオトギバラシ　第十五話【実卓リプレイ】
+          registeredAt: '2021-11-12T01:11:03+09:00'
+          count:
+            view: 34654
+            comment: 544
+            mylist: 35
+            like: 1972
+          thumbnail:
+            url: 'https://nicovideo.cdn.nimg.jp/thumbnails/39610651/39610651.26388625'
+            middleUrl: 'https://nicovideo.cdn.nimg.jp/thumbnails/39610651/39610651.26388625.M'
+            largeUrl: 'https://nicovideo.cdn.nimg.jp/thumbnails/39610651/39610651.26388625.L'
+            listingUrl: 'https://nicovideo.cdn.nimg.jp/thumbnails/39610651/39610651.26388625.M'
+            nHdUrl: 'https://img.cdn.nimg.jp/s/nicovideo/thumbnails/39610651/39610651.26388625.original/r640x360l?key=876052aefe0dce3fe210c7002caefa8fd65a2310e39b21e8a23a84ea18298ca0'
+          duration: 476
+          shortDescription: 物語はクライマックスへ今回の参加者のえぞうさん→user/13648411駄犬ゆつくりさん→user
+          latestCommentSummary: 誘導がほんま上手い ブスー 契約書にちゃんと記載しといてね いったい何あざかなんで… でも鑑定はできた 生徒生活リズム良すぎひん？ さすがにダメか え、ニッコニコに見えるけど うぽーつ！ 言い回しほんとすき ババンバンバか ああ、あのときはもう夜だっ...
+          isChannelVideo: false
+          isPaymentRequired: false
+          playbackPosition: null
+          owner:
+            ownerType: user
+            type: user
+            visibility: visible
+            id: '13647798'
+            name: ニコライ・ボルコフ
+            iconUrl: 'https://secure-dcdn.cdn.nimg.jp/nicoaccount/usericon/1364/13647798.jpg?1596133406'
+          requireSensitiveMasking: false
+          videoLive: null
+          isMuted: false
+          9d091f87: false
+          acf68865: false
+    followerCount: 86
+    createdAt: '2021-05-17T07:38:44+09:00'
+    isFollowing: false
+properties:
+  id:
+    type: integer
+  isPublic:
+    type: boolean
+  name:
+    type: string
+  description:
+    type: string
+  decoratedDescriptionHtml:
+    type: string
+  defaultSortKey:
+    type: string
+  defaultSortOrder:
+    type: string
+  itemsCount:
+    type: integer
+  owner:
+    type: object
+    properties:
+      ownerType:
+        type: string
+      type:
+        type: string
+      visibility:
+        type: string
+      id:
+        type: string
+      name:
+        type: string
+      iconUrl:
+        type: string
+  sampleItems:
+    type: array
+    items:
+      type: object
+      properties:
+        itemId:
+          type: integer
+        watchId:
+          type: string
+        description:
+          type: string
+        decoratedDescriptionHtml:
+          type: string
+        addedAt:
+          type: string
+        status:
+          type: string
+        video:
+          $ref: ./Movie.yaml
+  followerCount:
+    type: integer
+  createdAt:
+    type: string
+  isFollowing:
+    type: boolean

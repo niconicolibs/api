@@ -1,0 +1,42 @@
+type: object
+properties:
+  id:
+    type: integer
+  owner:
+    type: object
+    properties:
+      type:
+        type: string
+      id:
+        type: string
+  title:
+    type: string
+  isListed:
+    type: boolean
+  description:
+    type: string
+  thumbnailUrl:
+    type: string
+  itemsCount:
+    type: integer
+x-examples:
+  example-1:
+    id: 361920
+    owner:
+      type: user
+      id: '13647798'
+    title: 風の又三郎 ‐Scarlet Girl with Wind Voice‐（新クトゥルフ神話TRPG）
+    isListed: true
+    description: ''
+    thumbnailUrl: 'https://nicovideo.cdn.nimg.jp/web/img/series/no_thumbnail.png'
+    itemsCount: 9
+examples:
+  - id: 361920
+    owner:
+      type: user
+      id: '13647798'
+    title: 風の又三郎 ‐Scarlet Girl with Wind Voice‐（新クトゥルフ神話TRPG）
+    isListed: true
+    description: ''
+    thumbnailUrl: 'https://nicovideo.cdn.nimg.jp/web/img/series/no_thumbnail.png'
+    itemsCount: 9

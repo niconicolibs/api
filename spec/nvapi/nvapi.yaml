@@ -114,7 +114,313 @@ paths:
           name: user-session
           description: ユーザーセッション(なくても機能します)
       tags:
-        - User
+        - Users
+  '/v3/users/{userId}/videos':
+    parameters:
+      - schema:
+          type: integer
+        name: userId
+        in: path
+        required: true
+        description: ユーザーID
+    get:
+      summary: Get User Videos
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  meta:
+                    $ref: ./models/Meta.yaml
+                  data:
+                    type: object
+                    properties:
+                      totalCount:
+                        type: integer
+                      items:
+                        type: array
+                        items:
+                          $ref: ./models/Movie.yaml
+                required:
+                  - meta
+              examples:
+                example:
+                  value:
+                    meta:
+                      status: 200
+                    data:
+                      totalCount: 56
+                      items:
+                        - series: null
+                          essential:
+                            type: essential
+                            id: sm34693045
+                            title: 【ApexLegends】辺境歩きのユカリAPEX【VOICEROID実況】
+                            registeredAt: '2019-02-26T19:00:00+09:00'
+                            count:
+                              view: 283516
+                              comment: 2247
+                              mylist: 897
+                              like: 270
+                            thumbnail:
+                              url: 'https://nicovideo.cdn.nimg.jp/thumbnails/34693045/34693045.65360'
+                              middleUrl: 'https://nicovideo.cdn.nimg.jp/thumbnails/34693045/34693045.65360.M'
+                              largeUrl: 'https://nicovideo.cdn.nimg.jp/thumbnails/34693045/34693045.65360.L'
+                              listingUrl: 'https://nicovideo.cdn.nimg.jp/thumbnails/34693045/34693045.65360.M'
+                              nHdUrl: 'https://img.cdn.nimg.jp/s/nicovideo/thumbnails/34693045/34693045.65360.original/r640x360l?key=0953c49be5975f3ea708428204477f5b3be8a9c5e5df0487fe0689bb2584c451'
+                            duration: 1069
+                            shortDescription: PC/PS4/箱1の無料バトロワゲーです。このゲームがここまで面白いと誰が予想できただろうか…---
+                            latestCommentSummary: はぐニキとかいう化け物小隊長w 促進剤は！？ シールドがー わかる 島がドンパチにぎやかになったらだ そうだよ(便乗) 『`д´『 神読 せんちねる！ 座ー子 懐かしいなこのMAP パラサイト・イヴ1のボス戦BGMとそっくり 玉は大丈夫か？ 2022...
+                            isChannelVideo: false
+                            isPaymentRequired: false
+                            playbackPosition: null
+                            owner:
+                              ownerType: user
+                              type: user
+                              visibility: visible
+                              id: '227322'
+                              name: ヶ崎
+                              iconUrl: 'https://secure-dcdn.cdn.nimg.jp/nicoaccount/usericon/22/227322.jpg?1571567072'
+                            requireSensitiveMasking: false
+                            videoLive: null
+                            isMuted: false
+                            9d091f87: false
+                            acf68865: false
+      operationId: get-v1-users-userId-videos
+      description: 指定したユーザーIDの投稿している動画情報を取得します。
+      parameters:
+        - schema:
+            type: number
+            example: 6
+          in: header
+          name: x-Frontend-Id
+          description: PC版は6固定
+          required: true
+        - schema:
+            type: string
+            example: '0'
+          in: header
+          name: x-Frontend-version
+          description: PC版は0固定
+          required: true
+        - schema:
+            type: string
+          in: cookie
+          name: user-session
+          description: ユーザーセッション(なくても機能します)
+        - schema:
+            type: string
+            default: registeredAt
+            enum:
+              - registeredAt
+              - viewCount
+              - lastCommentTime
+              - commentCount
+              - likeCount
+              - mylistCount
+              - duration
+          in: query
+          name: sortKey
+          description: ソートする方法
+        - schema:
+            type: string
+            default: asc
+            enum:
+              - asc
+              - desc
+          in: query
+          name: sortOrder
+          description: 降順か昇順か
+        - schema:
+            type: integer
+            default: 30
+          in: query
+          name: pageSize
+          description: 一度に表示する動画数
+        - schema:
+            type: integer
+            default: 1
+          in: query
+          name: page
+          description: ページ番号
+        - schema:
+            type: string
+            default: mask
+          in: query
+          name: sensitiveContents
+          description: センシティブコンテンツを隠すか
+      tags:
+        - Users
+  '/v1/users/{userId}/series':
+    parameters:
+      - schema:
+          type: integer
+        name: userId
+        in: path
+        required: true
+        description: ユーザーID
+    get:
+      summary: Get User Series
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  meta:
+                    $ref: ./models/Meta.yaml
+                  data:
+                    type: object
+                    properties:
+                      totalCount:
+                        type: integer
+                      items:
+                        type: array
+                        items:
+                          $ref: ./models/Series.yaml
+                required:
+                  - meta
+              examples:
+                example:
+                  value:
+                    meta:
+                      status: 200
+                    data:
+                      totalCount: 253
+                      items:
+                        - id: 361920
+                          owner:
+                            type: user
+                            id: '13647798'
+                          title: 風の又三郎 ‐Scarlet Girl with Wind Voice‐（新クトゥルフ神話TRPG）
+                          isListed: true
+                          description: ''
+                          thumbnailUrl: 'https://nicovideo.cdn.nimg.jp/web/img/series/no_thumbnail.png'
+                          itemsCount: 9
+      operationId: get-v1-users-userId-series
+      description: 指定したユーザーIDのシリーズ情報を取得します。
+      parameters:
+        - schema:
+            type: number
+            example: 6
+          in: header
+          name: x-Frontend-Id
+          description: PC版は6固定
+          required: true
+        - schema:
+            type: string
+            example: '0'
+          in: header
+          name: x-Frontend-version
+          description: PC版は0固定
+          required: true
+        - schema:
+            type: string
+          in: cookie
+          name: user-session
+          description: ユーザーセッション(なくても機能します)
+        - schema:
+            type: integer
+          in: query
+          name: pageSize
+          description: 一度に表示する動画数
+        - schema:
+            type: integer
+            default: 1
+          in: query
+          name: page
+          description: ページ番号
+      tags:
+        - Users
+  '/v1/users/{userId}/mylists':
+    parameters:
+      - schema:
+          type: integer
+        name: userId
+        in: path
+        required: true
+        description: ユーザーID
+    get:
+      summary: Get User Mylists
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  meta:
+                    $ref: ./models/Meta.yaml
+                  data:
+                    type: object
+                    properties:
+                      mylists:
+                        type: array
+                        items:
+                          $ref: ./models/Mylist.yaml
+                required:
+                  - meta
+              examples:
+                example:
+                  value:
+                    meta:
+                      status: 200
+                    data:
+                      mylists:
+                        - id: 71043760
+                          isPublic: true
+                          name: エモクロア
+                          description: ''
+                          decoratedDescriptionHtml: ''
+                          defaultSortKey: addedAt
+                          defaultSortOrder: desc
+                          itemsCount: 47
+                          owner:
+                            ownerType: user
+                            type: user
+                            visibility: visible
+                            id: '13647798'
+                            name: ニコライ・ボルコフ
+                            iconUrl: 'https://secure-dcdn.cdn.nimg.jp/nicoaccount/usericon/1364/13647798.jpg?1596133406'
+                          sampleItems: []
+                          followerCount: 86
+                          createdAt: '2021-05-17T07:38:44+09:00'
+                          isFollowing: false
+      operationId: get-v1-users-userId-mylists
+      description: 指定したユーザーIDのマイリストを取得します。
+      parameters:
+        - schema:
+            type: number
+            example: 6
+          in: header
+          name: x-Frontend-Id
+          description: PC版は6固定
+          required: true
+        - schema:
+            type: string
+            example: '0'
+          in: header
+          name: x-Frontend-version
+          description: PC版は0固定
+          required: true
+        - schema:
+            type: string
+          in: cookie
+          name: user-session
+          description: ユーザーセッション(なくても機能します)
+        - schema:
+            type: integer
+            default: 0
+          in: query
+          name: sampleItemCount
+      tags:
+        - Users
 components:
   schemas: {}
   securitySchemes: {}

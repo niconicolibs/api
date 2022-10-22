@@ -1,0 +1,129 @@
+type: object
+x-examples:
+  example-1:
+    series: null
+    essential:
+      type: essential
+      id: sm34693045
+      title: 【ApexLegends】辺境歩きのユカリAPEX【VOICEROID実況】
+      registeredAt: '2019-02-26T19:00:00+09:00'
+      count:
+        view: 283516
+        comment: 2247
+        mylist: 897
+        like: 270
+      thumbnail:
+        url: 'https://nicovideo.cdn.nimg.jp/thumbnails/34693045/34693045.65360'
+        middleUrl: 'https://nicovideo.cdn.nimg.jp/thumbnails/34693045/34693045.65360.M'
+        largeUrl: 'https://nicovideo.cdn.nimg.jp/thumbnails/34693045/34693045.65360.L'
+        listingUrl: 'https://nicovideo.cdn.nimg.jp/thumbnails/34693045/34693045.65360.M'
+        nHdUrl: 'https://img.cdn.nimg.jp/s/nicovideo/thumbnails/34693045/34693045.65360.original/r640x360l?key=0953c49be5975f3ea708428204477f5b3be8a9c5e5df0487fe0689bb2584c451'
+      duration: 1069
+      shortDescription: PC/PS4/箱1の無料バトロワゲーです。このゲームがここまで面白いと誰が予想できただろうか…---
+      latestCommentSummary: はぐニキとかいう化け物小隊長w 促進剤は！？ シールドがー わかる 島がドンパチにぎやかになったらだ そうだよ(便乗) 『`д´『 神読 せんちねる！ 座ー子 懐かしいなこのMAP パラサイト・イヴ1のボス戦BGMとそっくり 玉は大丈夫か？ 2022...
+      isChannelVideo: false
+      isPaymentRequired: false
+      playbackPosition: null
+      owner:
+        ownerType: user
+        type: user
+        visibility: visible
+        id: '227322'
+        name: ヶ崎
+        iconUrl: 'https://secure-dcdn.cdn.nimg.jp/nicoaccount/usericon/22/227322.jpg?1571567072'
+      requireSensitiveMasking: false
+      videoLive: null
+      isMuted: false
+      9d091f87: false
+      acf68865: false
+properties:
+  series:
+    type:
+      - 'null'
+      - object
+    properties:
+      id:
+        type: integer
+      order:
+        type: integer
+      title:
+        type: string
+  essential:
+    type: object
+    properties:
+      type:
+        type: string
+      id:
+        type: string
+      title:
+        type: string
+      registeredAt:
+        type: string
+      count:
+        type: object
+        properties:
+          view:
+            type: integer
+          comment:
+            type: integer
+          mylist:
+            type: integer
+          like:
+            type: integer
+      thumbnail:
+        type: object
+        properties:
+          url:
+            type: string
+          middleUrl:
+            type: string
+          largeUrl:
+            type: string
+          listingUrl:
+            type: string
+          nHdUrl:
+            type: string
+      duration:
+        type: integer
+      shortDescription:
+        type: string
+      latestCommentSummary:
+        type: string
+      isChannelVideo:
+        type: boolean
+      isPaymentRequired:
+        type: boolean
+      playbackPosition:
+        type:
+          - 'null'
+          - integer
+      owner:
+        type: object
+        properties:
+          ownerType:
+            type: string
+          type:
+            type: string
+          visibility:
+            type: string
+          id:
+            type: string
+          name:
+            type: string
+          iconUrl:
+            type: string
+      requireSensitiveMasking:
+        type: boolean
+      videoLive:
+        type:
+          - 'null'
+          - object
+        properties:
+          liveStartTime:
+            type: string
+      isMuted:
+        type: boolean
+      9d091f87:
+        type: boolean
+      acf68865:
+        type: boolean
