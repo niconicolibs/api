@@ -50,7 +50,7 @@ paths:
       operationId: get-v1-users.json
       description: |-
         指定したユーザーIDの簡易的なユーザー情報を取得します。<br/>
-        https://account.nicovideo.jp/api/public/v1/users.jsonからもアクセスできます。
+        https://account.nicovideo.jp/api/public/v1/users.json からもアクセスできます。
       parameters:
         - schema:
             type: array
@@ -83,7 +83,7 @@ paths:
       operationId: get-v2-user.json
       description: |-
         自分のユーザー情報を取得します。<br>
-        https://account.nicovideo.jp/api/public/v2/user.jsonからもアクセスできます。
+        https://account.nicovideo.jp/api/public/v2/user.json からもアクセスできます。
       parameters:
         - schema:
             type: string
