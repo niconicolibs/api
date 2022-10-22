@@ -1,0 +1,143 @@
+type: object
+x-examples:
+  example:
+    description: ボイスロイド沼にハマっていた見る専が、今では作る側になりました。セイカお姉さんはいいぞ！<br>代表作出演作品：ふにんがす　開催企画：セイカフェス2022、シルシランド　等
+    decoratedDescriptionHtml: ボイスロイド沼にハマっていた見る専が、今では作る側になりました。セイカお姉さんはいいぞ！<br>代表作出演作品：ふにんがす　開催企画：セイカフェス2022、シルシランド　等
+    strippedDescription: ボイスロイド沼にハマっていた見る専が、今では作る側になりました。セイカお姉さんはいいぞ！代表作出演作品：ふにんがす　開催企画：セイカフェス2022、シルシランド　等
+    isPremium: true
+    registeredVersion: (γ)
+    followeeCount: 254
+    followerCount: 28652
+    userLevel:
+      currentLevel: 121
+      nextLevelThresholdExperience: 31000
+      nextLevelExperience: 18734
+      currentLevelExperience: 12266
+    userChannel: null
+    isNicorepoReadable: true
+    sns:
+      - type: twitter
+        label: Twitter
+        iconUrl: 'https://nicovideo.cdn.nimg.jp/web/images/sns_icon/twitter.png'
+        screenName: sirusira
+        url: 'https://twitter.com/sirusira'
+      - type: youtube
+        label: YouTube
+        iconUrl: 'https://nicovideo.cdn.nimg.jp/web/images/sns_icon/youtube.png'
+        screenName: UC7vIcdBaUEeOKnCadRza-7A
+        url: 'https://www.youtube.com/channel/UC7vIcdBaUEeOKnCadRza-7A'
+    coverImage:
+      ogpUrl: 'https://img.cdn.nimg.jp/s/nicovideo/cover-image/220860/220860.1665037554/r2048x1152l?key=6bbdac4d875c4300cb66c65eb137685c296fb0917f5cc6f53c9fe32e7d8f999c'
+      pcUrl: 'https://img.cdn.nimg.jp/s/nicovideo/cover-image/220860/220860.1665037554/a2048x338s?key=9d59d7cd1204a891cd667c8b94e6448ba910553d25fc3bc4c9098c07b7107154'
+      smartphoneUrl: 'https://img.cdn.nimg.jp/s/nicovideo/cover-image/220860/220860.1665037554/a2048x338s?key=9d59d7cd1204a891cd667c8b94e6448ba910553d25fc3bc4c9098c07b7107154'
+    id: 220860
+    nickname: シルシラ
+    icons:
+      small: 'https://secure-dcdn.cdn.nimg.jp/nicoaccount/usericon/s/22/220860.jpg?1583491000'
+      large: 'https://secure-dcdn.cdn.nimg.jp/nicoaccount/usericon/22/220860.jpg?1583491000'
+properties:
+  description:
+    type: string
+    description: HTML形式のプロフィール
+  decoratedDescriptionHtml:
+    type: string
+  strippedDescription:
+    type: string
+    description: 省略されたプロフィール
+  isPremium:
+    type: boolean
+    description: プレミアム会員かどうか
+  registeredVersion:
+    type: string
+    description: アカウントを登録したバージョン名
+  followeeCount:
+    type: integer
+    description: フォローしている数
+  followerCount:
+    type: integer
+    description: フォロワー数
+  userLevel:
+    type: object
+    description: ユーザーレベル
+    properties:
+      currentLevel:
+        type: integer
+      nextLevelThresholdExperience:
+        type: integer
+      nextLevelExperience:
+        type: integer
+      currentLevelExperience:
+        type: integer
+  userChannel:
+    type:
+      - object
+      - 'null'
+    description: 紐付けられているチャンネル
+    properties:
+      id:
+        type: string
+      name:
+        type: string
+      description:
+        type: string
+      thumbnailUrl:
+        type: string
+      thumbnailSmallUrl:
+        type: string
+  isNicorepoReadable:
+    type: boolean
+  sns:
+    type: array
+    description: 紐付けられているSNSのリスト
+    items:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+            - twitter
+            - instagram
+            - youtube
+            - facebook
+          description: SNSの種類
+        label:
+          type: string
+          description: SNSの表示ラベル
+        iconUrl:
+          type: string
+          description: SNSのアイコン
+        screenName:
+          type: string
+          description: SNSのユーザー名
+        url:
+          type: string
+          description: SNSのURL
+  coverImage:
+    type:
+      - object
+      - 'null'
+    description: |-
+      プロフィールのヘッダー画像
+      設定していない場合はnull
+    properties:
+      ogpUrl:
+        type: string
+      pcUrl:
+        type: string
+      smartphoneUrl:
+        type: string
+  id:
+    type: integer
+    description: ユーザーID
+  nickname:
+    type: string
+    description: ユーザーのニックネーム
+  icons:
+    type: object
+    description: ユーザーのアイコン
+    properties:
+      small:
+        type: string
+      large:
+        type: string
+examples: []

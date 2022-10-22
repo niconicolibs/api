@@ -28,6 +28,25 @@ paths:
                 properties:
                   meta:
                     $ref: ./models/Meta.yaml
+                  data:
+                    type: object
+                    properties:
+                      user:
+                        $ref: ./models/User.yaml
+                      relationships:
+                        type: object
+                        properties:
+                          sessionUser:
+                            type: object
+                            properties:
+                              isFollowing:
+                                type: boolean
+                                default: false
+                                description: ログイン中のユーザーがフォローしているか
+                          isMe:
+                            type: boolean
+                            default: false
+                            description: ログイン中のユーザーかどうか
                 required:
                   - meta
       operationId: get-v1-users-userId
@@ -47,6 +66,11 @@ paths:
           name: x-Frontend-version
           description: '0'
           required: true
+        - schema:
+            type: string
+          in: cookie
+          name: user-session
+          description: ユーザーセッション(なくても機能します)
       tags:
         - User
 components:
