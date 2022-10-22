@@ -31,8 +31,13 @@ header {
     color: white;
     background: #252525;
     padding-left: 10px;
-    font-family: 'Noto Sans', sans-serif !important;
+    font-family: Montserrat, sans-serif !important;
     gap: 15px;
+    z-index: 1000;
+}
+
+div.menu-content {
+    top: 50px !important;
 }
 
 a.headerLink {
@@ -52,7 +57,9 @@ a.logoLink {
     margin-right: 10px;
 }
 a.logoLink > p{
-    margin-top: 10px;
+    margin-top: 7px;
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: 700;
 }
 
 a.active {
