@@ -1,33 +1,20 @@
-<!-- HTML for static distribution bundle build -->
 <!DOCTYPE html>
 <html lang="ja">
   <head>
     <meta charset="UTF-8">
     <title>nvapi | ニコ動非公式APIドキュメント</title>
-    <link rel="stylesheet" type="text/css" href="../static/swagger-ui.css" />
-    <link rel="stylesheet" type="text/css" href="../static/index.css" />
-    <link rel="icon" type="image/png" href="../static/favicon-32x32.png" sizes="32x32" />
-    <link rel="icon" type="image/png" href="../static/favicon-16x16.png" sizes="16x16" />
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,700|Roboto:300,400,700" rel="stylesheet">
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+    </style>
   </head>
-
   <body>
-    <div id="swagger-ui"></div>
-    <script src="../static//swagger-ui-bundle.js" charset="UTF-8"> </script>
-    <script src="../static/swagger-ui-standalone-preset.js" charset="UTF-8"> </script>
-    <script charset="UTF-8">
-      window.ui = SwaggerUIBundle({
-        url: "../spec/nvapi/nvapi.yaml",
-        dom_id: '#swagger-ui',
-        deepLinking: true,
-        presets: [
-          SwaggerUIBundle.presets.apis,
-          SwaggerUIStandalonePreset
-        ],
-        plugins: [
-          SwaggerUIBundle.plugins.DownloadUrl
-        ],
-        layout: "StandaloneLayout"
-      });
-    </script>
+    <redoc spec-url='../spec/nvapi/nvapi.yaml'></redoc>
+    <script src="https://cdn.redoc.ly/redoc/latest/bundles/redoc.standalone.js"> </script>
   </body>
 </html>

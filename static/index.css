@@ -15,6 +15,10 @@ body {
     background: #fafafa;
 }
 
+a {
+    color: black;
+}
+
 .swagger-ui .opblock-body pre,
 .swagger-ui .response-col_description__inner div.markdown {
     font-size: 15px;
