@@ -1,0 +1,46 @@
+type: object
+properties:
+  type:
+    type: string
+  relationships:
+    type: object
+    properties:
+      sessionUser:
+        type: object
+        properties:
+          isFollowing:
+            type: boolean
+  isPremium:
+    type: boolean
+  description:
+    type: string
+  strippedDescription:
+    type: string
+  shortDescription:
+    type: string
+  id:
+    type: integer
+  nickname:
+    type: string
+  icons:
+    type: object
+    properties:
+      small:
+        type: string
+      large:
+        type: string
+x-examples:
+  example-1:
+    type: relationship
+    relationships:
+      sessionUser:
+        isFollowing: true
+    isPremium: true
+    description: 'VOICEROIDの動画を作ってます。<br/>【放送室】co2979039 【YouTube】https://www.youtube.com/c/Kisaragiragi<br/>【連絡先】https://twitter.com/Ragi05'
+    strippedDescription: 'VOICEROIDの動画を作ってます。【放送室】co2979039 【YouTube】https://www.youtube.com/c/Kisaragiragi【連絡先】https://twitter.com/Ragi05'
+    shortDescription: 'VOICEROIDの動画を作ってます。【放送室】co2979039 【YouTube】https:/'
+    id: 814203
+    nickname: 如月ラギ
+    icons:
+      small: 'https://secure-dcdn.cdn.nimg.jp/nicoaccount/usericon/s/81/814203.jpg?1637921130'
+      large: 'https://secure-dcdn.cdn.nimg.jp/nicoaccount/usericon/81/814203.jpg?1637921130'

@@ -189,7 +189,7 @@ paths:
                             isMuted: false
                             9d091f87: false
                             acf68865: false
-      operationId: get-v1-users-userId-videos
+      operationId: get-v3-users-userId-videos
       description: 指定したユーザーIDの投稿している動画情報を取得します。
       parameters:
         - schema:
@@ -419,6 +419,105 @@ paths:
             default: 0
           in: query
           name: sampleItemCount
+      tags:
+        - Users
+  '/v1/users/{userId}/following/users':
+    parameters:
+      - schema:
+          type: integer
+        name: userId
+        in: path
+        required: true
+        description: ユーザーID
+    get:
+      summary: Get User Mylists
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  meta:
+                    $ref: ./models/Meta.yaml
+                  data:
+                    type: object
+                    properties:
+                      items:
+                        type: array
+                        items:
+                          $ref: ./models/MinimamUser.yaml
+                      summary:
+                        type: object
+                        properties:
+                          followees:
+                            type: integer
+                          followers:
+                            type: integer
+                          hasNext:
+                            type: boolean
+                          cursor:
+                            type: string
+                required:
+                  - meta
+              examples:
+                example:
+                  value:
+                    meta:
+                      status: 200
+                    data:
+                      items:
+                        - type: relationship
+                          relationships:
+                            sessionUser:
+                              isFollowing: true
+                          isPremium: true
+                          description: 'VOICEROIDの動画を作ってます。<br/>【放送室】co2979039 【YouTube】https://www.youtube.com/c/Kisaragiragi<br/>【連絡先】https://twitter.com/Ragi05'
+                          strippedDescription: 'VOICEROIDの動画を作ってます。【放送室】co2979039 【YouTube】https://www.youtube.com/c/Kisaragiragi【連絡先】https://twitter.com/Ragi05'
+                          shortDescription: 'VOICEROIDの動画を作ってます。【放送室】co2979039 【YouTube】https:/'
+                          id: 814203
+                          nickname: 如月ラギ
+                          icons:
+                            small: 'https://secure-dcdn.cdn.nimg.jp/nicoaccount/usericon/s/81/814203.jpg?1637921130'
+                            large: 'https://secure-dcdn.cdn.nimg.jp/nicoaccount/usericon/81/814203.jpg?1637921130'
+                      summary:
+                        followees: 56
+                        followers: 109278
+                        hasNext: true
+                        cursor: '20220807135613_814203'
+      operationId: get-v1-users-userId-following-users
+      description: 指定したユーザーIDのフォローしているユーザーを取得します。
+      parameters:
+        - schema:
+            type: number
+            example: 6
+          in: header
+          name: x-Frontend-Id
+          description: PC版は6固定
+          required: true
+        - schema:
+            type: string
+            example: '0'
+          in: header
+          name: x-Frontend-version
+          description: PC版は0固定
+          required: true
+        - schema:
+            type: string
+          in: cookie
+          name: user-session
+          description: ユーザーセッション(なくても機能します)
+        - schema:
+            type: integer
+          in: query
+          name: pageSize
+          required: true
+        - schema:
+            type: integer
+            default: 1
+          in: query
+          name: page
       tags:
         - Users
 components:
