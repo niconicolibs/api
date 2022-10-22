@@ -619,6 +619,245 @@ paths:
           name: page
       tags:
         - Users
+  /v2/search/video:
+    get:
+      summary: Search Videos By Keyword or Tag
+      tags:
+        - Search
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  meta:
+                    $ref: ./models/Meta.yaml
+                  data:
+                    type: object
+                    properties:
+                      searchId:
+                        type: string
+                      keyword:
+                        type: string
+                        nullable: true
+                      tag:
+                        type: string
+                        nullable: true
+                      genres:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            key:
+                              type: string
+                            labe;:
+                              type: string
+                      totalCount:
+                        type: integer
+                      hasNext:
+                        type: boolean
+                      items:
+                        type: array
+                        items:
+                          $ref: ./models/Movie.yaml
+                      additionals:
+                        type: object
+                        properties:
+                          waku:
+                            type: object
+                          tags:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                text:
+                                  type: string
+                                type:
+                                  type: string
+              examples:
+                example:
+                  value:
+                    meta:
+                      status: 200
+                    data:
+                      searchId: 45629418-d06e-4ea0-8f28-f89007ba0f46
+                      keyword: VOICEROID実況プレイ
+                      tag: null
+                      genres:
+                        - key: game
+                          label: ゲーム
+                      totalCount: 3728
+                      hasNext: true
+                      items:
+                        - type: essential
+                          id: sm41266162
+                          title: みんなお待ちかねのトロンボーンカードタイム！！！！！！【Trombone Champ】
+                          registeredAt: '2022-10-22T20:00:00+09:00'
+                          count:
+                            view: 890
+                            comment: 42
+                            mylist: 10
+                            like: 161
+                          thumbnail:
+                            url: 'https://nicovideo.cdn.nimg.jp/thumbnails/41266162/41266162.31683622'
+                            middleUrl: 'https://nicovideo.cdn.nimg.jp/thumbnails/41266162/41266162.31683622.M'
+                            largeUrl: 'https://nicovideo.cdn.nimg.jp/thumbnails/41266162/41266162.31683622.L'
+                            listingUrl: 'https://nicovideo.cdn.nimg.jp/thumbnails/41266162/41266162.31683622.M'
+                            nHdUrl: 'https://img.cdn.nimg.jp/s/nicovideo/thumbnails/41266162/41266162.31683622.original/r640x360l?key=96dbe4f8bb405f8db5c302fc055e5c7d1d13428b8f72916cc818ab2ff84e9530'
+                          duration: 95
+                          shortDescription: 待たせたね！！！！！！！！！【ことのはうす。シリーズ】series/272272【ことのあそびシリー
+                          latestCommentSummary: ストラビンスキーと言えば映像の世紀だな！！ おつ うぽつ おつ うぽつ ぽつー うぽつ うぽつ うぽつー おつ うぽつ ふふふ ドヤッシー 安定のトイボクシング 何故ホットドッグ？ レピッシュ ノートロンボーンノーライフ 乙です うぽつ ことのあーそ...
+                          isChannelVideo: false
+                          isPaymentRequired: false
+                          playbackPosition: null
+                          owner:
+                            ownerType: user
+                            type: user
+                            visibility: visible
+                            id: '35947073'
+                            name: いえろーず
+                            iconUrl: 'https://secure-dcdn.cdn.nimg.jp/nicoaccount/usericon/3594/35947073.jpg?1658435372'
+                          requireSensitiveMasking: false
+                          videoLive: null
+                          isMuted: false
+                          9d091f87: false
+                          acf68865: false
+                      additionals:
+                        tags:
+                          - text: VOICEROID実況プレイ
+                            type: included_word
+                          - text: VOICEROID実況プレイPart1リンク
+                            type: included_word
+                          - text: VOICEROID実況プレイ最終回リンク
+                            type: included_word
+                          - text: VOICEROID実況プレイ単発リンク
+                            type: included_word
+                          - text: 多人数VOICEROID実況プレイ
+                            type: included_word
+                          - text: 非VOICEROID実況プレイ
+                            type: included_word
+                          - text: voiceroid実況プレイ琴葉茜・葵実況プレイ
+                            type: included_word
+                          - text: 非VOICEROID実況プレイPart1リンク
+                            type: included_word
+                          - text: 多人数VOICEROID実況プレイPart1リンク
+                            type: included_word
+                          - text: voiceroid実況プレイ動画
+                            type: included_word
+                        waku: {}
+      operationId: get-v2-search-video
+      description: |-
+        動画を指定した条件で検索します
+        **QueryParamsのkeywordとtagはどちらかを必ず指定しなければなりません**
+      parameters:
+        - schema:
+            type: integer
+            default: 6
+          in: header
+          name: X-Frontend-Id
+          description: 固定で6
+          required: true
+        - schema:
+            type: integer
+            default: 0
+          in: header
+          name: X-Frontend-Version
+          description: 固定で0
+          required: true
+        - schema:
+            type: string
+          in: query
+          name: keyword
+          description: キーワード検索
+          required: true
+        - schema:
+            type: string
+          in: query
+          name: tag
+          description: タグ検索
+          required: true
+        - schema:
+            type: string
+          in: query
+          name: pageSize
+        - schema:
+            type: string
+          in: query
+          name: page
+        - schema:
+            type: string
+            enum:
+              - registeredAt
+              - viewCount
+              - lastCommentTime
+              - commentCount
+              - likeCount
+              - mylistCount
+              - duration
+              - hot
+              - personalized
+          in: query
+          name: sortKey
+          required: true
+        - schema:
+            type: string
+            enum:
+              - asc
+              - desc
+              - none
+          in: query
+          name: sortOrder
+          required: true
+        - schema:
+            type: string
+          in: query
+          name: sensitiveContents
+        - schema:
+            type: array
+            default:
+              - game
+              - entertainment
+          in: query
+          name: genres
+          description: ジャンル
+        - schema:
+            type: string
+            example: included
+          in: query
+          name: channelVideoListingStatus
+          description: チャンネル動画を表示するか
+        - schema:
+            type: boolean
+            example: true
+          in: query
+          name: allowFutureContents
+          description: 未来のコンテンツを表示するか
+        - schema:
+            type: boolean
+            example: true
+          in: query
+          name: searchByUser
+          description: ユーザー情報に基づき表示するか
+        - schema:
+            type: string
+            example: '2022-10-22T23:21:55+09:00'
+          in: query
+          name: minRegisteredAt
+          description: よりも後に投稿された動画
+        - schema:
+            type: string
+            example: '2022-10-22T23:21:55+09:00'
+          in: query
+          name: maxRegisteredAt
+          description: よりも前に投稿された動画
+        - schema:
+            type: integer
+            example: 300
+          in: query
+          name: maxDuration
+          description: 最長の動画長さ(秒)
 components:
   schemas: {}
   securitySchemes: {}
