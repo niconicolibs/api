@@ -17,6 +17,10 @@ tags:
     description: Search Videos
   - name: Ranking
     description: Get Ranking
+  - name: List
+    description: About Mylist and Series
+  - name: Video
+    description: About Video
   - name: Other
     description: Other API
 paths:
@@ -1632,6 +1636,545 @@ paths:
           name: sensitiveContents
           description: センシティブな動画を隠すか
       description: 話題の動画を取得します
+  '/v2/mylists/{mylistId}':
+    parameters:
+      - schema:
+          type: string
+        name: mylistId
+        in: path
+        required: true
+    get:
+      summary: Get Mylist Content
+      tags:
+        - List
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  meta:
+                    $ref: ./models/Meta.yaml
+                  data:
+                    type: object
+                    properties:
+                      mylist:
+                        $ref: ./models/Mylist.yaml
+              examples:
+                example:
+                  value:
+                    meta:
+                      status: 200
+                    data:
+                      mylist:
+                        id: 65776587
+                        name: TABS
+                        description: トータリー何とかかんとか
+                        decoratedDescriptionHtml: トータリー何とかかんとか
+                        defaultSortKey: addedAt
+                        defaultSortOrder: desc
+                        items:
+                          - itemId: 1559887204
+                            watchId: sm35230676
+                            description: ''
+                            decoratedDescriptionHtml: ''
+                            addedAt: '2019-06-08T08:19:31+09:00'
+                            status: public
+                            video:
+                              type: essential
+                              id: sm35230676
+                              title: 【TABS】葵のお留守番①VOICEROID実況
+                              registeredAt: '2019-06-07T18:00:00+09:00'
+                              count:
+                                view: 393715
+                                comment: 8825
+                                mylist: 1552
+                                like: 695
+                              thumbnail:
+                                url: 'https://nicovideo.cdn.nimg.jp/thumbnails/35230676/35230676.83267040'
+                                middleUrl: 'https://nicovideo.cdn.nimg.jp/thumbnails/35230676/35230676.83267040.M'
+                                largeUrl: 'https://nicovideo.cdn.nimg.jp/thumbnails/35230676/35230676.83267040.L'
+                                listingUrl: 'https://nicovideo.cdn.nimg.jp/thumbnails/35230676/35230676.83267040.M'
+                                nHdUrl: 'https://img.cdn.nimg.jp/s/nicovideo/thumbnails/35230676/35230676.83267040.original/r640x360l?key=dbadc3eff9ecc9251ee04391a006088ba2e2c14dbf5c8c45bb3a232838577b8e'
+                              duration: 665
+                              shortDescription: 葵ちゃんがメイン？の動画ですあと新キャラの日本面鳴花ヒメです竹槍の精霊って事でよろしくどうぞ！青い方
+                              latestCommentSummary: いいよ パンジャンパンジャンパンジャンパンジャンパンジャンパンジャンパンジャンパンジャンパンジャンパンジャンパンジャンパンジャンパンジャンパンジャンパンジャン ﾃﾞｪｪｴｪｪｪｴｪｪｪｪｪｪｪｪｯｪｪｪｪｪｪｪｪｪｪｪｪｪｪｪｪｪｪｪｪｪｪｪｪｪｪｪ...
+                              isChannelVideo: false
+                              isPaymentRequired: false
+                              playbackPosition: null
+                              owner:
+                                ownerType: user
+                                type: user
+                                visibility: visible
+                                id: '49977741'
+                                name: たらちゃん（英国面）
+                                iconUrl: 'https://secure-dcdn.cdn.nimg.jp/nicoaccount/usericon/4997/49977741.jpg?1478777197'
+                              requireSensitiveMasking: false
+                              videoLive: null
+                              isMuted: false
+                              9d091f87: false
+                              acf68865: false
+                        totalItemCount: 1
+                        hasNext: false
+                        isPublic: true
+                        owner:
+                          ownerType: user
+                          type: user
+                          visibility: visible
+                          id: '49977741'
+                          name: たらちゃん（英国面）
+                          iconUrl: 'https://secure-dcdn.cdn.nimg.jp/nicoaccount/usericon/4997/49977741.jpg?1478777197'
+                        hasInvisibleItems: false
+                        followerCount: 10
+                        isFollowing: false
+      operationId: get-v2-mylists-mylistId
+      parameters:
+        - schema:
+            type: number
+            example: 6
+          in: header
+          name: x-Frontend-Id
+          description: PC版は6固定
+          required: true
+        - schema:
+            type: number
+            example: 0
+          in: header
+          name: x-Frontend-version
+          description: PC版は0固定
+          required: true
+        - schema:
+            type: string
+          in: query
+          name: pageSize
+        - schema:
+            type: string
+          in: query
+          name: page
+        - schema:
+            type: string
+          in: cookie
+          name: user-session
+        - schema:
+            type: string
+            enum:
+              - addedAt
+              - title
+              - mylistComment
+              - registeredAt
+              - viewCount
+              - lastComment
+              - commentCount
+              - likeCount
+              - mylistCount
+              - duration
+          in: query
+          name: sortKey
+          description: ソート方式
+        - schema:
+            type: string
+            enum:
+              - asc
+              - desc
+            default: asc
+          in: query
+          name: sortOrder
+          description: 降順か昇順か
+      description: マイリストIDからマイリストの内容を取得します
+  '/v2/series/{seriesId}':
+    parameters:
+      - schema:
+          type: string
+        name: seriesId
+        in: path
+        required: true
+    get:
+      summary: Get Mylist Content
+      tags:
+        - List
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  meta:
+                    $ref: ./models/Meta.yaml
+                  data:
+                    type: object
+                    properties:
+                      detail:
+                        $ref: ./models/DetailSeries.yaml
+                      totalCount:
+                        type: integer
+                      items:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            meta:
+                              type: object
+                              properties:
+                                id:
+                                  type: string
+                                order:
+                                  type: integer
+                                createdAt:
+                                  type: string
+                                updatedAt:
+                                  type: string
+                            video:
+                              $ref: ./models/EssentialVideo.yaml
+              examples:
+                example:
+                  value:
+                    meta:
+                      status: 200
+                    data:
+                      detail:
+                        id: 363443
+                        owner:
+                          type: user
+                          id: '49977741'
+                          user:
+                            type: essential
+                            isPremium: true
+                            description: |-
+                              紅茶を飲むたびに私の動画を思い出すがいい▼<br>
+                              ツイッター：https://twitter.com/taratya19800<br>
+                              youtube：https://www.youtube.com/channel/UCcjBXcy-7sdo8syFyqlU5tw/videos<br>
+                              ニコ生：co3007527<br>
+                              支援絵：clip/1831804
+                            strippedDescription: |-
+                              紅茶を飲むたびに私の動画を思い出すがいい▼
+                              ツイッター：https://twitter.com/taratya19800
+                              youtube：https://www.youtube.com/channel/UCcjBXcy-7sdo8syFyqlU5tw/videos
+                              ニコ生：co3007527
+                              支援絵：clip/1831804
+                            shortDescription: |-
+                              紅茶を飲むたびに私の動画を思い出すがいい▼
+                              ツイッター：https://twitter.com/ta
+                            id: 49977741
+                            nickname: たらちゃん（英国面）
+                            icons:
+                              small: 'https://secure-dcdn.cdn.nimg.jp/nicoaccount/usericon/s/4997/49977741.jpg?1478777197'
+                              large: 'https://secure-dcdn.cdn.nimg.jp/nicoaccount/usericon/4997/49977741.jpg?1478777197'
+                        title: スプラ
+                        description: ''
+                        decoratedDescriptionHtml: ''
+                        thumbnailUrl: 'https://dcdn.cdn.nimg.jp/nicovideo/series/tmb/0/49977741/363443.1666180836'
+                        isListed: true
+                        createdAt: '2022-10-19T20:59:37+09:00'
+                        updatedAt: '2022-10-19T21:00:36+09:00'
+                      totalCount: 2
+                      items:
+                        - meta:
+                            id: sm41131114
+                            order: 1
+                            createdAt: '2022-10-19T21:00:05+09:00'
+                            updatedAt: '2022-10-19T21:00:05+09:00'
+                          video:
+                            type: essential
+                            id: sm41131114
+                            title: 【スプラトゥーン３】第１回ただの野良マッチをそれっぽく実況してみた。VOICEROID実況
+                            registeredAt: '2022-09-25T15:00:00+09:00'
+                            count:
+                              view: 129389
+                              comment: 2306
+                              mylist: 208
+                              like: 6827
+                            thumbnail:
+                              url: 'https://nicovideo.cdn.nimg.jp/thumbnails/41131114/41131114.89859446'
+                              middleUrl: 'https://nicovideo.cdn.nimg.jp/thumbnails/41131114/41131114.89859446.M'
+                              largeUrl: 'https://nicovideo.cdn.nimg.jp/thumbnails/41131114/41131114.89859446.L'
+                              listingUrl: 'https://nicovideo.cdn.nimg.jp/thumbnails/41131114/41131114.89859446.M'
+                              nHdUrl: 'https://img.cdn.nimg.jp/s/nicovideo/thumbnails/41131114/41131114.89859446.original/r640x360l?key=d83b731ff6a17711566ae2b3a1be8a5e4696c49afaba1ac669f0f9a18f74fe80'
+                            duration: 494
+                            shortDescription: 'スパイガジェット最強！パンジャンTシャツ作りました：https://tarapyon.booth.p'
+                            latestCommentSummary: 出オチで草w やるじゃん なんやかんや茜ちゃんのおかげで勝てた試合だな 上手すぎる ｗｗｗｗｗｗｗ き　ほ　ん　は　ま　る ハハハッ(棒) デ　ス　ぺ　ナ　ザ　ッ　プ なぜネビルシュートさんが！？ ｱｵｲﾁｬﾝｲﾅｲﾄﾞｳｼﾃｰ マジかよ、すげぇ！ ...
+                            isChannelVideo: false
+                            isPaymentRequired: false
+                            playbackPosition: null
+                            owner:
+                              ownerType: user
+                              type: user
+                              visibility: visible
+                              id: '49977741'
+                              name: たらちゃん（英国面）
+                              iconUrl: 'https://secure-dcdn.cdn.nimg.jp/nicoaccount/usericon/4997/49977741.jpg?1478777197'
+                            requireSensitiveMasking: false
+                            videoLive: null
+                            isMuted: false
+                            9d091f87: false
+                            acf68865: false
+      operationId: get-v2-series-mylistId
+      parameters:
+        - schema:
+            type: integer
+            example: 6
+          in: header
+          name: x-Frontend-Id
+          description: PC版は6固定
+          required: true
+        - schema:
+            type: integer
+            example: 0
+          in: header
+          name: x-Frontend-version
+          description: PC版は0固定
+          required: true
+        - schema:
+            type: string
+          in: query
+          name: pageSize
+        - schema:
+            type: string
+          in: query
+          name: page
+        - schema:
+            type: string
+          in: cookie
+          name: user-session
+        - schema:
+            type: string
+            enum:
+              - addedAt
+              - title
+              - mylistComment
+              - registeredAt
+              - viewCount
+              - lastComment
+              - commentCount
+              - likeCount
+              - mylistCount
+              - duration
+          in: query
+          name: sortKey
+          description: ソート方式
+        - schema:
+            type: string
+            enum:
+              - asc
+              - desc
+            default: asc
+          in: query
+          name: sortOrder
+          description: 降順か昇順か
+      description: シリーズIDからシリーズの内容を取得します
+  /v1/videos:
+    get:
+      summary: Get Video Data
+      tags:
+        - Video
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  meta:
+                    $ref: ./models/Meta.yaml
+                  data:
+                    type: object
+                    properties:
+                      items:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            watchId:
+                              type: string
+                            video:
+                              $ref: ./models/EssentialVideo.yaml
+              examples:
+                example:
+                  value:
+                    meta:
+                      status: 200
+                    data:
+                      items:
+                        - watchId: sm33854807
+                          video:
+                            type: essential
+                            id: sm33854807
+                            title: 【初音ミク】アディショナルメモリー【オリジナルMV】
+                            registeredAt: '2018-09-14T20:00:00+09:00'
+                            count:
+                              view: 2304921
+                              comment: 17455
+                              mylist: 17173
+                              like: 1086
+                            thumbnail:
+                              url: 'https://nicovideo.cdn.nimg.jp/thumbnails/33854807/33854807'
+                              middleUrl: 'https://nicovideo.cdn.nimg.jp/thumbnails/33854807/33854807.M'
+                              largeUrl: 'https://nicovideo.cdn.nimg.jp/thumbnails/33854807/33854807.L'
+                              listingUrl: 'https://nicovideo.cdn.nimg.jp/thumbnails/33854807/33854807.M'
+                              nHdUrl: 'https://img.cdn.nimg.jp/s/nicovideo/thumbnails/33854807/33854807.original/r640x360l?key=aefa3a8fe1deb4ebfc92e2724232183faf7dc9adaeb65ac679b8b1a6f091d537'
+                            duration: 240
+                            shortDescription: 自然の敵Ｐことじんです。１6作目になります。最後の最後に遺った話。「友達なんかに、なりたくなかった」
+                            latestCommentSummary: あああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああ あああああああああああああああああああああああああああああああああああああああああああああああああ...
+                            isChannelVideo: false
+                            isPaymentRequired: false
+                            playbackPosition: null
+                            owner:
+                              ownerType: user
+                              type: user
+                              visibility: visible
+                              id: '15872264'
+                              name: じん
+                              iconUrl: 'https://secure-dcdn.cdn.nimg.jp/nicoaccount/usericon/1587/15872264.jpg?1306843201'
+                            requireSensitiveMasking: false
+                            videoLive: null
+                            isMuted: false
+                            9d091f87: false
+                            acf68865: false
+      operationId: get-v1-videos
+      parameters:
+        - schema:
+            type: integer
+            example: 6
+          in: header
+          name: x-Frontend-Id
+          description: PC版は6固定
+          required: true
+        - schema:
+            type: integer
+            example: 0
+          in: header
+          name: x-Frontend-version
+          description: PC版は0固定
+          required: true
+        - schema:
+            type: array
+          in: query
+          name: watchIds
+          description: 動画ID
+      description: 動画IDで指定した複数の動画情報を取得します
+  '/v1/videos/{videoId}/tags':
+    parameters:
+      - schema:
+          type: string
+        name: videoId
+        in: path
+        required: true
+    get:
+      summary: Your GET endpoint
+      tags:
+        - Video
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  meta:
+                    $ref: ./models/Meta.yaml
+                  data:
+                    type: object
+                    properties:
+                      isLockable:
+                        type: boolean
+                      isEditable:
+                        type: boolean
+                      uneditableReason:
+                        type: string
+                        nullable: true
+                      tags:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                            isLocked:
+                              type: boolean
+                            isLockedBySystem:
+                              type: boolean
+                            isNicodicArticleExists:
+                              type: boolean
+              examples:
+                example:
+                  value:
+                    meta:
+                      status: 200
+                    data:
+                      isLockable: false
+                      isEditable: true
+                      uneditableReason: null
+                      tags:
+                        - name: 春日部つむぎ
+                          isLocked: true
+                          isLockedBySystem: false
+                          isNicodicArticleExists: true
+                        - name: りょの字
+                          isLocked: true
+                          isLockedBySystem: false
+                          isNicodicArticleExists: true
+                        - name: VOICEROIDキッチン
+                          isLocked: true
+                          isLockedBySystem: false
+                          isNicodicArticleExists: true
+                        - name: voicevox
+                          isLocked: true
+                          isLockedBySystem: false
+                          isNicodicArticleExists: true
+                        - name: 紅生姜
+                          isLocked: true
+                          isLockedBySystem: false
+                          isNicodicArticleExists: true
+                        - name: カレー
+                          isLocked: true
+                          isLockedBySystem: false
+                          isNicodicArticleExists: true
+                        - name: 犯罪メシ選手権
+                          isLocked: true
+                          isLockedBySystem: false
+                          isNicodicArticleExists: true
+                        - name: 春日部つむぎ公式の犬
+                          isLocked: false
+                          isLockedBySystem: false
+                          isNicodicArticleExists: false
+                        - name: ドクターストップ
+                          isLocked: false
+                          isLockedBySystem: false
+                          isNicodicArticleExists: false
+                        - name: シャア専用
+                          isLocked: false
+                          isLockedBySystem: false
+                          isNicodicArticleExists: false
+                        - name: 着色料
+                          isLocked: false
+                          isLockedBySystem: false
+                          isNicodicArticleExists: false
+      operationId: get-v1-videos-videoId-tags
+      description: 指定した動画IDのタグを取得します
+      parameters:
+        - schema:
+            type: integer
+            example: 6
+          in: header
+          name: x-Frontend-Id
+          description: PC版は6固定
+          required: true
+        - schema:
+            type: integer
+            example: 0
+          in: header
+          name: x-Frontend-version
+          description: PC版は0固定
+          required: true
+        - schema:
+            type: string
+          in: cookie
+          name: user-session
   /v2/genres:
     get:
       summary: Get Current Genres

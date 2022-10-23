@@ -1,0 +1,85 @@
+type: object
+properties:
+  id:
+    type: integer
+  owner:
+    type: object
+    properties:
+      type:
+        type: string
+      id:
+        type: string
+      user:
+        type: object
+        properties:
+          type:
+            type: string
+          isPremium:
+            type: boolean
+          description:
+            type: string
+          strippedDescription:
+            type: string
+          shortDescription:
+            type: string
+          id:
+            type: integer
+          nickname:
+            type: string
+          icons:
+            type: object
+            properties:
+              small:
+                type: string
+              large:
+                type: string
+  title:
+    type: string
+  description:
+    type: string
+  decoratedDescriptionHtml:
+    type: string
+  thumbnailUrl:
+    type: string
+  isListed:
+    type: boolean
+  createdAt:
+    type: string
+  updatedAt:
+    type: string
+x-examples:
+  example-1:
+    id: 363443
+    owner:
+      type: user
+      id: '49977741'
+      user:
+        type: essential
+        isPremium: true
+        description: |-
+          紅茶を飲むたびに私の動画を思い出すがいい▼<br>
+          ツイッター：https://twitter.com/taratya19800<br>
+          youtube：https://www.youtube.com/channel/UCcjBXcy-7sdo8syFyqlU5tw/videos<br>
+          ニコ生：co3007527<br>
+          支援絵：clip/1831804
+        strippedDescription: |-
+          紅茶を飲むたびに私の動画を思い出すがいい▼
+          ツイッター：https://twitter.com/taratya19800
+          youtube：https://www.youtube.com/channel/UCcjBXcy-7sdo8syFyqlU5tw/videos
+          ニコ生：co3007527
+          支援絵：clip/1831804
+        shortDescription: |-
+          紅茶を飲むたびに私の動画を思い出すがいい▼
+          ツイッター：https://twitter.com/ta
+        id: 49977741
+        nickname: たらちゃん（英国面）
+        icons:
+          small: 'https://secure-dcdn.cdn.nimg.jp/nicoaccount/usericon/s/4997/49977741.jpg?1478777197'
+          large: 'https://secure-dcdn.cdn.nimg.jp/nicoaccount/usericon/4997/49977741.jpg?1478777197'
+    title: スプラ
+    description: ''
+    decoratedDescriptionHtml: ''
+    thumbnailUrl: 'https://dcdn.cdn.nimg.jp/nicovideo/series/tmb/0/49977741/363443.1666180836'
+    isListed: true
+    createdAt: '2022-10-19T20:59:37+09:00'
+    updatedAt: '2022-10-19T21:00:36+09:00'
