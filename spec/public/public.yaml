@@ -17,6 +17,8 @@ servers:
 tags:
   - name: Users
     description: About Niconico User
+  - name: Timeline
+    description: About Nicorepo
 paths:
   /v1/users.json:
     get:
@@ -101,3 +103,146 @@ paths:
           name: user-session
           description: ユーザーセッション
           required: true
+  '/v1/timelines/nicorepo/{term}/users/{userId}/{os}/entries.json':
+    get:
+      summary: Get Nicorepo
+      tags:
+        - Timeline
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  meta:
+                    $ref: ./models/Meta.yaml
+        '':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  meta:
+                    type: object
+                    properties:
+                      status:
+                        type: integer
+                      hasNext:
+                        type: boolean
+                      maxId:
+                        type: string
+                      minId:
+                        type: string
+                      errors:
+                        type: array
+                        items:
+                          type: string
+                      errorCode:
+                        type: string
+                      errorMessage:
+                        type: string
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        updated:
+                          type: string
+                        watchContext:
+                          type: object
+                          properties:
+                            parameter:
+                              type: object
+                              properties:
+                                nicorepo:
+                                  type: string
+                        actor:
+                          type: object
+                          properties:
+                            url:
+                              type: string
+                            name:
+                              type: string
+                            icon:
+                              type: string
+                        title:
+                          type: string
+                        object:
+                          type: object
+                          properties:
+                            type:
+                              type: string
+                            url:
+                              type: string
+                            name:
+                              type: string
+                            image:
+                              type: string
+      operationId: get-v1-timelines-nicorepo
+      description: ユーザーページに表示されるニコレポを取得します
+      parameters:
+        - schema:
+            type: string
+            enum:
+              - video
+              - program
+              - image
+              - comitStory
+              - article
+              - game
+          in: query
+          name: 'object[type]'
+          description: プラットフォームの種類
+        - schema:
+            type: string
+            enum:
+              - add
+              - onair
+          in: query
+          name: type
+          description: レポートの種類
+        - schema:
+            type: string
+            enum:
+              - self
+              - followingUser
+              - followingChannel
+              - followingCommunity
+              - followingMylist
+          in: query
+          description: 表示対象絞り込み
+          name: list
+        - schema:
+            type: string
+          in: query
+          name: untilId
+          description: 更に昔を読み込み用
+    parameters:
+      - schema:
+          type: string
+        name: userId
+        in: path
+        required: true
+        description: ユーザーID
+      - schema:
+          type: string
+          enum:
+            - pc
+            - ios
+            - android
+        name: os
+        in: path
+        required: true
+        description: OS名
+      - schema:
+          type: string
+          enum:
+            - last-1-month
+            - last-6-months
+        name: term
+        in: path
+        required: true
