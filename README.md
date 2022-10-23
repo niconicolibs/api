@@ -1,4 +1,4 @@
-# ニコ動非公式APIドキュメント
+# ニコニコ非公式APIドキュメント
 
 ### [Public API](https://niconicolibs.github.io/api/public/)
 
