@@ -261,6 +261,9 @@ paths:
         - schema:
             type: string
             default: mask
+            enum:
+              - mask
+              - filter
           in: query
           name: sensitiveContents
           description: センシティブコンテンツを隠すか
@@ -880,6 +883,9 @@ paths:
           required: true
         - schema:
             type: string
+            enum:
+              - mask
+              - filter
           in: query
           name: sensitiveContents
         - schema:
@@ -1066,6 +1072,9 @@ paths:
           required: true
         - schema:
             type: string
+            enum:
+              - mask
+              - filter
           in: query
           name: sensitiveContents
         - schema:
@@ -1381,10 +1390,13 @@ paths:
           required: true
         - schema:
             type: string
-            example: mask
+            enum:
+              - mask
+              - filter
+            default: mask
           in: query
           name: sensitiveContents
-          description: mask
+          description: センシティブな動画を隠すか
       description: 新着動画の取得
   '/v1/ranking/genre/{genreKey}':
     parameters:
@@ -1506,9 +1518,13 @@ paths:
           description: '25,100のみ'
         - schema:
             type: string
+            default: mask
+            enum:
+              - mask
+              - filter
           in: query
           name: sensitiveContents
-          description: mask
+          description: センシティブな動画を隠すか
         - schema:
             type: string
           in: query
@@ -1608,9 +1624,13 @@ paths:
           description: '25,100のみ'
         - schema:
             type: string
+            default: mask
+            enum:
+              - mask
+              - filter
           in: query
           name: sensitiveContents
-          description: mask
+          description: センシティブな動画を隠すか
       description: 話題の動画を取得します
   /v2/genres:
     get:
