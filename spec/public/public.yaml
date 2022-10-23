@@ -5,14 +5,20 @@ info:
   title: Public API
   version: 1.0.0
   description: 主にニコニコ全体に共通する情報を取得するためのAPI
+  contact:
+    name: niconicolibs
+    url: 'https://github.com/niconicolibs/api'
 servers:
   - url: 'https://public.api.nicovideo.jp'
+tags:
+  - name: Users
+    descrition: About Niconico User
 paths:
   /v1/users.json:
     get:
       summary: Get Users Infomation
       tags:
-        - User
+        - Users
       responses:
         '200':
           description: OK
@@ -65,7 +71,7 @@ paths:
     get:
       summary: Get Own Infomation
       tags:
-        - User
+        - Users
       responses:
         '200':
           description: OK

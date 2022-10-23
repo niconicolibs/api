@@ -5,8 +5,20 @@ info:
   title: Nicovideo API
   version: 1.0.0
   description: ニコニコ動画に関する情報を取得するAPI
+  contact:
+    name: niconicolibs
+    url: 'https://github.com/niconicolibs/api'
 servers:
   - url: 'https://nvapi.nicovideo.jp'
+tags:
+  - name: Users
+    description: About Niconico User
+  - name: Search
+    description: Search Videos
+  - name: Ranking
+    description: Get Ranking
+  - name: Other
+    description: Other API
 paths:
   '/v1/users/{userId}':
     parameters:
@@ -1507,7 +1519,61 @@ paths:
       summary: Get Hot-Topic Videos
       tags:
         - Ranking
-      responses: {}
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  hasNext:
+                    type: boolean
+                  items:
+                    type: array
+                    items:
+                      $ref: ./models/EssentialVideo.yaml
+              examples:
+                example:
+                  value:
+                    meta:
+                      status: 200
+                    data:
+                      items:
+                        - type: essential
+                          id: sm41266508
+                          title: 【ふにんがす】新役職実装回　催眠なんかに絶対負けないふにんがす【Amongus】
+                          registeredAt: '2022-10-22T19:00:00+09:00'
+                          count:
+                            view: 24649
+                            comment: 996
+                            mylist: 96
+                            like: 3935
+                          thumbnail:
+                            url: 'https://nicovideo.cdn.nimg.jp/thumbnails/41266508/41266508.14785630'
+                            middleUrl: 'https://nicovideo.cdn.nimg.jp/thumbnails/41266508/41266508.14785630.M'
+                            largeUrl: 'https://nicovideo.cdn.nimg.jp/thumbnails/41266508/41266508.14785630.L'
+                            listingUrl: 'https://nicovideo.cdn.nimg.jp/thumbnails/41266508/41266508.14785630.M'
+                            nHdUrl: 'https://img.cdn.nimg.jp/s/nicovideo/thumbnails/41266508/41266508.14785630.original/r640x360l?key=5885dea9faa39f4b7c8653796718761031af3c339de9fa4fa811efa52b9ebed4'
+                          duration: 530
+                          shortDescription: １０月１６日に行われた新役職実装祭りの動画です。収録中にPCがシャットダウンしたため動画データ壊れた
+                          latestCommentSummary: ククク…お楽しみに… シルクちゃんのチラリズムからしか接種できない栄養素があるのだ 犯人はヤスだな。 頭にビール咲いてますよ みんなこっそり見てたんでしょ うぽつ シル、魔球と初期勢の動画ありがてえ クルーの能力が取れ～た～ 端末の陰に骨見えるがあれ...
+                          isChannelVideo: false
+                          isPaymentRequired: false
+                          playbackPosition: 0
+                          owner:
+                            ownerType: user
+                            type: user
+                            visibility: visible
+                            id: '220860'
+                            name: シルシラ
+                            iconUrl: 'https://secure-dcdn.cdn.nimg.jp/nicoaccount/usericon/22/220860.jpg?1583491000'
+                          requireSensitiveMasking: false
+                          videoLive: null
+                          isMuted: false
+                          9d091f87: false
+                          acf68865: false
+                      hasNext: true
       operationId: get-v1-ranking-hot-topic
       parameters:
         - schema:
