@@ -651,7 +651,7 @@ paths:
         required: true
         description: ユーザーID
     get:
-      summary: Your GET endpoint
+      summary: Get User Creator Support
       tags:
         - Users
       responses:
@@ -1795,7 +1795,7 @@ paths:
         in: path
         required: true
     get:
-      summary: Get Mylist Content
+      summary: Get Series Content
       tags:
         - List
       responses:
@@ -2068,7 +2068,7 @@ paths:
         in: path
         required: true
     get:
-      summary: Your GET endpoint
+      summary: Get Video Tags
       tags:
         - Video
       responses:
