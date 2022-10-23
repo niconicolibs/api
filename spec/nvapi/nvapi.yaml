@@ -916,7 +916,7 @@ paths:
           description: 最長の動画長さ(秒)
   /v2/search/facet:
     get:
-      summary: Get Facet of Videos  By Keyword or Tag
+      summary: Get Facet of Videos By Keyword or Tag
       tags:
         - Search
       responses:
@@ -1232,6 +1232,20 @@ paths:
       description: マイリスト及びシリーズを指定した条件で取得する
       parameters:
         - schema:
+            type: integer
+            default: 6
+          in: header
+          name: X-Frontend-Id
+          description: 固定で6
+          required: true
+        - schema:
+            type: integer
+            default: 0
+          in: header
+          name: X-Frontend-Version
+          description: 固定で0
+          required: true
+        - schema:
             type: string
           in: query
           name: keyword
@@ -1360,6 +1374,330 @@ paths:
           name: sensitiveContents
           description: mask
       description: 新着動画の取得
+  '/v1/ranking/genre/{genreKey}':
+    parameters:
+      - schema:
+          type: string
+        name: genreKey
+        in: path
+        required: true
+        description: genreKeyを参照
+    get:
+      summary: Get Ranking By GenreKey
+      tags:
+        - Ranking
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  hasNext:
+                    type: boolean
+                  items:
+                    type: array
+                    items:
+                      $ref: ./models/EssentialVideo.yaml
+              examples:
+                example:
+                  value:
+                    meta:
+                      status: 200
+                    data:
+                      items:
+                        - type: essential
+                          id: sm41266508
+                          title: 【ふにんがす】新役職実装回　催眠なんかに絶対負けないふにんがす【Amongus】
+                          registeredAt: '2022-10-22T19:00:00+09:00'
+                          count:
+                            view: 24649
+                            comment: 996
+                            mylist: 96
+                            like: 3935
+                          thumbnail:
+                            url: 'https://nicovideo.cdn.nimg.jp/thumbnails/41266508/41266508.14785630'
+                            middleUrl: 'https://nicovideo.cdn.nimg.jp/thumbnails/41266508/41266508.14785630.M'
+                            largeUrl: 'https://nicovideo.cdn.nimg.jp/thumbnails/41266508/41266508.14785630.L'
+                            listingUrl: 'https://nicovideo.cdn.nimg.jp/thumbnails/41266508/41266508.14785630.M'
+                            nHdUrl: 'https://img.cdn.nimg.jp/s/nicovideo/thumbnails/41266508/41266508.14785630.original/r640x360l?key=5885dea9faa39f4b7c8653796718761031af3c339de9fa4fa811efa52b9ebed4'
+                          duration: 530
+                          shortDescription: １０月１６日に行われた新役職実装祭りの動画です。収録中にPCがシャットダウンしたため動画データ壊れた
+                          latestCommentSummary: ククク…お楽しみに… シルクちゃんのチラリズムからしか接種できない栄養素があるのだ 犯人はヤスだな。 頭にビール咲いてますよ みんなこっそり見てたんでしょ うぽつ シル、魔球と初期勢の動画ありがてえ クルーの能力が取れ～た～ 端末の陰に骨見えるがあれ...
+                          isChannelVideo: false
+                          isPaymentRequired: false
+                          playbackPosition: 0
+                          owner:
+                            ownerType: user
+                            type: user
+                            visibility: visible
+                            id: '220860'
+                            name: シルシラ
+                            iconUrl: 'https://secure-dcdn.cdn.nimg.jp/nicoaccount/usericon/22/220860.jpg?1583491000'
+                          requireSensitiveMasking: false
+                          videoLive: null
+                          isMuted: false
+                          9d091f87: false
+                          acf68865: false
+                      hasNext: true
+      operationId: get-v1-ranking-genre-genreKey
+      description: |-
+        ジャンルごとのランキングを取得。全ジャンルの場合はgenreKey=total
+
+        ### genreKey
+        - **all**: すべてのジャンルのランキング
+        - **{genre.key}**: /v2/genre から取得できるジャンルのキー
+
+        ### PopularTag
+        - /v1/genres/{genreKey}/popular-tags で取得できる人気のタグ
+        - QueryParamsからtagを指定できる
+
+        |type＼term|hour|24h|week|month|total|
+        |-------|----|---|----|-----|-----|
+        |all    |○   |○  |○   |○    |○    |
+        |genre  |○   |○  |○   |○    |○    |
+        |tag    |○   |○  |✕   |✕    |✕    |
+      parameters:
+        - schema:
+            type: integer
+          in: header
+          name: X-Frontend-Id
+          description: 固定で6
+          required: true
+        - schema:
+            type: integer
+          in: header
+          name: X-Frontend-Version
+          description: 固定で0
+          required: true
+        - schema:
+            type: string
+            enum:
+              - hour
+              - 24h
+              - week
+              - month
+              - total
+          in: query
+          name: term
+          required: true
+          description: 集計の期間
+        - schema:
+            type: integer
+          in: query
+          name: page
+        - schema:
+            type: integer
+          in: query
+          name: pageSize
+          description: '25,100のみ'
+        - schema:
+            type: string
+          in: query
+          name: sensitiveContents
+          description: mask
+        - schema:
+            type: string
+          in: query
+          name: tag
+          description: popular-tagのいずれか
+  /v1/ranking/hot-topic:
+    get:
+      summary: Get Hot-Topic Videos
+      tags:
+        - Ranking
+      responses: {}
+      operationId: get-v1-ranking-hot-topic
+      parameters:
+        - schema:
+            type: integer
+          in: header
+          name: X-Frontend-Id
+          description: 固定で6
+          required: true
+        - schema:
+            type: integer
+          in: header
+          name: X-Frontend-Version
+          description: 固定で0
+          required: true
+        - schema:
+            type: string
+            enum:
+              - hour
+              - 24h
+          in: query
+          name: term
+          required: true
+          description: 集計の期間
+        - schema:
+            type: integer
+          in: query
+          name: page
+        - schema:
+            type: integer
+          in: query
+          name: pageSize
+          description: '25,100のみ'
+        - schema:
+            type: string
+          in: query
+          name: sensitiveContents
+          description: mask
+      description: 話題の動画を取得します
+  /v2/genres:
+    get:
+      summary: Get Current Genres
+      tags:
+        - Other
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  meta:
+                    $ref: ./models/Meta.yaml
+                  data:
+                    type: object
+                    properties:
+                      genres:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            key:
+                              type: string
+                            label:
+                              type: string
+              examples:
+                example:
+                  value:
+                    meta:
+                      status: 200
+                    data:
+                      genres:
+                        - key: entertainment
+                          label: エンターテイメント
+                        - key: radio
+                          label: ラジオ
+                        - key: music_sound
+                          label: 音楽・サウンド
+                        - key: dance
+                          label: ダンス
+                        - key: animal
+                          label: 動物
+                        - key: nature
+                          label: 自然
+                        - key: cooking
+                          label: 料理
+                        - key: traveling_outdoor
+                          label: 旅行・アウトドア
+                        - key: vehicle
+                          label: 乗り物
+                        - key: sports
+                          label: スポーツ
+                        - key: society_politics_news
+                          label: 社会・政治・時事
+                        - key: technology_craft
+                          label: 技術・工作
+                        - key: commentary_lecture
+                          label: 解説・講座
+                        - key: anime
+                          label: アニメ
+                        - key: game
+                          label: ゲーム
+                        - key: other
+                          label: その他
+                        - key: r18
+                          label: R-18
+      operationId: get-v2-genres
+      description: 現存するジャンルのキートラベルの組み合わせを取得します
+      parameters:
+        - schema:
+            type: integer
+          in: header
+          name: X-Frontend-Id
+          description: 固定で6
+          required: true
+        - schema:
+            type: integer
+          in: header
+          name: X-Frontend-Version
+          description: 固定で0
+          required: true
+  '/v1/genres/{genreKey}/popular-tags':
+    parameters:
+      - schema:
+          type: string
+        name: genreKey
+        in: path
+        required: true
+        description: /v2/genres で取得できるジャンルのキー
+    get:
+      summary: Get PopularTag By GenreKey
+      tags:
+        - Other
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  meta:
+                    $ref: ./models/Meta.yaml
+                  data:
+                    type: object
+                    properties:
+                      startAt:
+                        type: string
+                      tags:
+                        type: array
+                        items:
+                          type: string
+              examples:
+                example:
+                  value:
+                    meta:
+                      status: 200
+                    data:
+                      startAt: '2022-10-17T00:00:00+09:00'
+                      tags:
+                        - biim兄貴リスペクト
+                        - VOICEROID実況プレイ
+                        - RTA
+                        - ふにんがす
+                        - 遊戯王マスターデュエル
+                        - ゆっくり実況プレイ
+                        - スプラトゥーン3
+                        - ウマ娘プリティーダービー
+                        - TAS
+                        - たべるんごのうた
+                        - アイドルマスター
+                        - ゲーム
+                        - 実況プレイ動画
+                        - TRPG
+                        - 東方
+      operationId: get-v1-genres-genreKey-popular-tags
+      description: ジャンルごとの人気のタグを取得する
+      parameters:
+        - schema:
+            type: integer
+          in: header
+          name: X-Frontend-Id
+          description: 固定で6
+          required: true
+        - schema:
+            type: integer
+          in: header
+          name: X-Frontend-Version
+          description: 固定で0
+          required: true
 components:
   schemas: {}
   securitySchemes: {}
