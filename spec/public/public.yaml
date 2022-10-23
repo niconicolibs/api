@@ -4,7 +4,11 @@ x-stoplight:
 info:
   title: Public API
   version: 1.0.0
-  description: 主にニコニコ全体に共通する情報を取得するためのAPI
+  description: |-
+    主にニコニコ全体に共通する情報を取得するためのAPI
+
+    #### Contribute
+    このドキュメントは[GitHub](https://github.com/niconicolibs/api)で管理されています。追加・修正はPRを送ってください。
   contact:
     name: niconicolibs
     url: 'https://github.com/niconicolibs/api'
@@ -12,7 +16,7 @@ servers:
   - url: 'https://public.api.nicovideo.jp'
 tags:
   - name: Users
-    descrition: About Niconico User
+    description: About Niconico User
 paths:
   /v1/users.json:
     get:

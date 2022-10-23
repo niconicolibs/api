@@ -4,7 +4,11 @@ x-stoplight:
 info:
   title: Nicovideo API
   version: 1.0.0
-  description: ニコニコ動画に関する情報を取得するAPI
+  description: |-
+    ニコニコ動画に関する情報を取得するAPI
+
+    #### Contribute
+    このドキュメントは[GitHub](https://github.com/niconicolibs/api)で管理されています。追加・修正はPRを送ってください。
   contact:
     name: niconicolibs
     url: 'https://github.com/niconicolibs/api'
