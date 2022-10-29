@@ -37,6 +37,7 @@ header {
 }
 
 div.menu-content {
+    height: calc(100vh - 50px) !important;
     top: 50px !important;
 }
 
